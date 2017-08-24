@@ -10,5 +10,9 @@ $$\forall \mathbf u, f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf u - \mathbf
 
 $$\forall \mathbf u \in S, \quad f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf u - \mathbf w, \mathbf v \rangle$$
 
-这里略去证明，直接使用这条引理。
+这里略去证明，直接使用这条引理。满足这条引理的$$\mathbf v$$ 就是函数$$f$$ 在点$$\mathbf w$$ 处的次梯度，次梯度集合称为可微集，记作$$\partial f(\mathbf w)$$
+
+上述概率理解起来不难，本质上来说，次梯度就是位于凸函数$$f$$ （不一定可微）下方且经过点$$\mathbf w$$ 的直线的斜率
+
+
 
