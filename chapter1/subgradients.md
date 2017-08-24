@@ -22,15 +22,15 @@ $$\forall \mathbf u \in S, \quad f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf
 
 $$\partial f(x) = \begin{cases} \lbrace 1 \rbrace &  \quad x \gt 0 \\ \lbrace -1 \rbrace &  \quad x \lt 0 \\ [-1,1] &  \quad x = 0 \end{cases}$$
 
+* #### 获取次梯度的方法
+
 实际上，对于分段凸函数$$g(\mathbf w) = max_{i \in [r]} g_i(\mathbf w)$$，它是由$$r$$ 个可微凸函数在每点处去最大值组成，假设在$$\mathbf w$$ 处，$$g_j(\mathbf w)$$ 取得最大值，必然有$$\nabla g_j(\mathbf w) \in \partial g(\mathbf w)$$，这是因为其切线位于$$g_j(\mathbf w)$$下方，而$$g(\mathbf w)$$ 取各个可微函数中的最大值，所以此切线必然也位于$$g(\mathbf w)$$ 的下方。
 
 总结一下，我们可以将可微函数的梯度扩展到非可微函数的次梯度，这样，就可以继续使用梯度下降法了，虽然次梯度是一个集合，但是计算时只要其中一个次梯度值即可。
 
-利普希茨函数
+* 利普希茨函数
 
 函数$$f: A \rightarrow \Bbb R$$，如果对$$\forall \mathbf u, \mathbf v \in A$$，均有 $$|f(\mathbf u) - f(\mathbf v)| \le \rho \left\| \mathbf u - \mathbf v \right\|$$，那么就称此函数在$$A$$ 上满足利普希茨条件
 
 显然，由于$$\mathbf u, \mathbf v$$ 的任意性，可知$$\forall \mathbf w \in A, \mathbf v \in \partial f(\mathbf w)$$，均有$$\left\| \mathbf v \right\| \le \rho$$
-
-
 
