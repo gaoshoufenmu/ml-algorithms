@@ -10,3 +10,5 @@ $$\forall \mathbf u, f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf u - \mathbf
 
 $$\forall \mathbf u \in S, \quad f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf u - \mathbf w, \mathbf v \rangle$$
 
+这里略去证明，直接使用这条引理。
+
