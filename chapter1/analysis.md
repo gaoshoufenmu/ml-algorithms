@@ -12,7 +12,7 @@ $$f(\mathbf w^{(t)}) - f(\mathbf w^*) \le \langle \mathbf w{(t)} - \mathbf w^*, 
 
 结合上面两式有，
 
-$$f(\overline {\mathbf w}) - f(\mathbf w^*) \le \frac 1 T \sum_{t=1}^T \langle \mathbf w^{(t)} - \mathbf w^*, \nabla f(\mathbf w^{(t)}) \rangle$$
+$$f(\overline {\mathbf w}) - f(\mathbf w^*) \le \frac 1 T \sum_{t=1}^T \langle \mathbf w^{(t)} - \mathbf w^*, \nabla f(\mathbf w^{(t)}) \rangle$$                          $$(*)$$
 
 现在我们需要证明：
 
@@ -34,5 +34,15 @@ $$\begin{align} \sum_{t=1}^T \langle \mathbf w^{(t)} - \mathbf w^*, \mathbf v_t 
 
 $$\frac 1 T \sum_{t=1}^T \langle \mathbf w^{(t)} - \mathbf w^*, \mathbf v_t \rangle \le \frac {B \rho} {\sqrt T}$$
 
+结合上面$$(*)$$式，
 
+$$f(\overline {\mathbf w}) - f(\mathbf w^*) \le \frac {B \rho} {\sqrt T}$$
+
+如果我们希望误差不超过指定值$$\epsilon$$，即
+
+$$\frac {B \rho} {\sqrt T} \le \epsilon$$
+
+从而迭代次数满足：
+
+$$ T \ge \frac {B^2 \rho^2} {\epsilon^2}$$
 
