@@ -14,5 +14,3 @@ $$\forall \mathbf u \in S, \quad f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf
 
 上述概率理解起来不难，本质上来说，次梯度就是位于凸函数$$f$$ （不一定可微）下方且经过点$$\mathbf w$$ 的直线的斜率
 
-
-
