@@ -16,5 +16,12 @@ $$\frac {B \rho} {\sqrt T} \le \epsilon$$
 
 变形
 
-前面介绍GD和SGD时，我们做了一个限定$$\mathcal H = \lbrace \mathbf w: \left\| \mathbf w \right\| \le B \rbrace$$，即在一个范围内搜索最优值的点，这是为了保障根据GD或者SGD迭代$$T$$ 次后的解与真实的最优解的在给定误差内，然而这个限定却不一定能满足，首先解释GD情况，如果有$$\mathbf w^* = argmax_{\mathbf w \in \mathcal H} \quad \left\| \mathbf w \right\|$$，那么在某个很靠近$$\mathbf w^*$$的$$\mathbf w^{(t)}$$时，搞不好此时的更新迭代就使得$$\mathbf w^{(t+1)}$$跨过$$\mathbf w^*$$从而使得$$\left\| \mathbf w^{(t+1)} \right\| \gt \left\| \mathbf w^* \right\|$$，更有甚者，万一$$\mathbf w^* \notin \mathcal H$$ 呢，这样迭代最后的输出仅仅是$$\mathcal H$$ 局部最优解。SGD的情况就更加无法保证这个限定条件了。
+前面介绍GD和SGD时，我们做了一个限定$$\mathcal H = \lbrace \mathbf w: \left\| \mathbf w \right\| \le B \rbrace$$，即在一个范围内搜索最优值的点，这是为了保障根据GD或者SGD迭代$$T$$ 次后的解与真实的最优解的在给定误差内，然而这个限定却不一定能满足，首先解释GD情况，如果有$$\mathbf w^* = argmax_{\mathbf w \in \mathcal H}  \left\| \mathbf w \right\|$$，那么在某个很靠近$$\mathbf w^*$$的$$\mathbf w^{(t)}$$时，搞不好此时的更新迭代就使得$$\mathbf w^{(t+1)}$$跨过$$\mathbf w^*$$从而使得$$\left\| \mathbf w^{(t+1)} \right\| \gt \left\| \mathbf w^* \right\|$$。SGD的情况下就更加无法保证这个限定条件了。
+
+一个直接的解决方法就是，既然迭代后有可能$$\left\| \mathbf w^{(t+1)} \right\| \notin \mathcal H$$，那就从$$\mathcal H$$ 中找一个与$$\mathbf w^{(t+1)}$$ 最靠近的点，即，将点投影到$$\mathcal H$$ 上，于是更新操作分为两步：
+
+1. 原先的更新操作，$$\mathbf w^{(t+1/2)} = \mathbf w^{(t)} - \eta \mathbf v_t$$
+2. 投影操作，$$\mathbf w^{(t+1)} = argmin_{\mathbf w \in \mathcal H} \left\| \mathbf w - \mathbf w^{(t + 1/2)} \right\|$$
+3. 
+
 
