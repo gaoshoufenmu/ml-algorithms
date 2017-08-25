@@ -28,7 +28,7 @@ $$\begin{align} \langle \mathbf w^{(t)} - \mathbf w^*, \mathbf v_t \rangle & = \
 
 $$\begin{align} \sum_{t=1}^T \langle \mathbf w^{(t)} - \mathbf w^*, \mathbf v_t \rangle & =  \frac 1 {2 \eta} (\left\| \mathbf w^{(1)} - \mathbf w^* \right\|^2 - \left\| \mathbf w^{(T+1)} - \mathbf w^* \right\|^2) + \frac \eta 2 \sum_{t=1}^T \left\| \mathbf v_t \right\|^2 \\ & \le \frac 1 {2 \eta} \left \| \mathbf w^{(1)} - \mathbf w^* \right\|^2 + \frac \eta 2 \sum{t=1}^T \left\| \mathbf v_t \right\|^2 \\ & = \frac 1 {2 \eta} \left\| \mathbf w^* \right\|^2 + \frac \eta 2 \sum_{t=1}^T \left\| \mathbf v_t \right\|^2 \end{align}$$
 
-于是，令$$\mathbf v_t = \nabla f(\mathbf w^{(t)})$$，并假定$$ \left\| \mathbf w^* \right\|^2 \le B, \left\| \mathbf v_t \right\| \le \rho$$，
+于是，令$$\mathbf v_t = \nabla f(\mathbf w^{(t)})$$，并假定$$ \left\| \mathbf w^* \right\|^2 \le B, \left\| \mathbf v_t \right\| \le \rho$$，（这里做了这个假定意味着在一定范围内$$\left\| \mathbf w \right\| \le B$$ 寻找最优点$$\mathbf w^*$$）
 
 令$$\eta = \sqrt {\frac {B^2} {\rho^2 T}}$$，故，
 
