@@ -38,9 +38,11 @@ $$\langle \mathbf w^{(t)} - \mathbf w^* , \mathbf v_t \rangle \le \frac {\Bbb E 
 
 结合\(\*\)式则，
 
-$$\sum_{t=1}^T (\Bbb E [f(\mathbf w^{(t)}) - f(\mathbf w^*)]) \le \Bbb E [\sum_{t=1}^T (\frac {\left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2 - \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2} {2 \eta_t} - \frac \lambda 2 \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2)] + \frac {\rho^2} 2 \sum{t=1}^T \eta_t$$
+$$\sum_{t=1}^T (\Bbb E [f(\mathbf w^{(t)})] - f(\mathbf w^*)) \le \Bbb E [\sum_{t=1}^T (\frac {\left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2 - \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2} {2 \eta_t} - \frac \lambda 2 \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2)] + \frac {\rho^2} 2 \sum{t=1}^T \eta_t$$
 
-现在令$$\eta_t = 1/(\lambda t)$$，并且注意到上式右端第一项的求和，展开让相邻项相消，可得 $$- \lambda T \left\| \mathbf w^{(T+1)} - \mathbf w^* \right\|^2 \le 0 $$，于是
+现在令$$\eta_t = 1/(\lambda t)$$，并且注意到上式右端第一项的求和，展开让相邻项相消，可得 $$- \lambda T \left\| \mathbf w^{(T+1)} - \mathbf w^* \right\|^2 \le 0 $$，所以有，
 
+$$\sum_{t=1}^T (\Bbb E [f(\mathbf w^{(t)})] - f(\mathbf w^*)) \le \frac {\rho^2} {2 \lambda} \sum_{t=1}^T \frac 1 t \le \frac {\rho^2} {2 \lambda} (1 + log(T))$$
 
+根据凸函数的性质，利用Jensen不等式，得证。
 
