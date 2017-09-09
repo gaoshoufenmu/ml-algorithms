@@ -28,11 +28,23 @@ $$\mathbf x_Q = \mathbf x_P + \lambda \mathbf w$$
 
 由于点$$Q$$位于直线上，所以$$\mathbf w (\mathbf x_P + \lambda \mathbf w) + b = 0$$，于是有
 
- $$\lambda = - \frac {\mathbf w \mathbf x_P + b} {\mathbf w^2}$$
+$$\lambda = - \frac {\mathbf w \mathbf x_P + b} {\mathbf w^2}$$
 
 所以距离为 $$|\vec {PQ}| = |\lambda||\mathbf w| = \frac {|\mathbf w \mathbf x_P + b|} {|\mathbf w|^2} |\mathbf w| = \frac {|\mathbf w \mathbf x_P + b|} {|\mathbf w|}$$
 
 结论: 点$$\mathbf x$$ 与直线$$\mathbf {wx} + b = 0$$ 的距离
 
 $$d = \frac {|\mathbf {wx} + b|}{|\mathbf w|}$$
+
+可以令$$|\mathbf w| = 1$$，等价于将直线$$\mathbf {wx} + b = 0$$ 两边同除以$$|\mathbf w|$$，毫无影响的说，直线还是那条直线，于是距离的形式为
+
+$$d = |\mathbf {wx} + b|$$
+
+眼看这一页也洋\(啰\)洋\(啰\)洒\(嗦\)洒\(嗦\)写了好多内容，可是与SVM直接相关的好像并没有多少（啊~痛苦脸），咳咳，写东西喜欢旁征博引不是坏事（故作安慰自我状，明明就是没抓住主题好嘛）。
+
+赶紧回归一波主题~
+
+我们不要忘记了找最佳的划分超平面时有一个前提，就是所有样本点分类正确，看本页第一个图，我们令（这是“你们”令的，我只是遵循这一约定，摊手~ 当然反过来也不是不可，只是没必要特立独行，毕竟殊途最终还是同归）正例（$$y=1$$）的样本点满足$$\mathbf {wx} + b \gt 0$$，负例（$$y=-1$$）的样本点满足$$\mathbf {wx} + b \lt 0$$ ，于是对所有$$m$$ 个样本点均有，
+
+$$\forall i \in [m], \quad y_i(\mathbf {wx_i} + b) > 0$$
 
