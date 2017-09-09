@@ -48,3 +48,43 @@ $$d = |\mathbf {wx} + b|$$
 
 $$\forall i \in [m], \quad y_i(\mathbf {wx_i} + b) > 0$$
 
+综上，我们要找的划分超平面的数学语言描述为，
+
+$$argmax_{(\mathbf w, b): |\mathbf w| = 1} \quad min_{i \in [m]} |\mathbf {w x}_i + b| \quad s.t. \quad \forall i, y_i(\mathbf {wx}_i + b) > 0$$              \(1\)
+
+接下来，我们相对上式进行一些改写，或者说是变形，也许变形后实际中求解更方便呢（美滋滋~）
+
+观察上式，可以发现$$|\mathbf {wx}_i + b| = |y_i(\mathbf {wx}_i + b)| = y_i(\mathbf {wx}_i + b) \gt 0$$
+
+$$|\mathbf {wx}_i + b| = |y_i(\mathbf {wx}_i + b)| = y_i(\mathbf {wx}_i + b) \gt 0$$                                                      \(1.5\)
+
+所以\(1\)式可以改写为，
+
+$$argmax_{(\mathbf w, b): |\mathbf w| = 1} \quad min_{i \in [m]} y_i(\mathbf {w x}_i + b)$$                                                                 \(2\)
+
+不用担心上式中$$y_i(\mathbf {wx}_i+b) \le 0$$，因为在外层，我们还要求解使其最大，从而能够保证$$y_i(\mathbf {wx}_i+b)\gt 0$$，只要样本是线性可分的（对于线性不可分的情况，后面再介绍）。
+
+再观察上面两式，发现又要求最小又要求最大的，甚是麻烦，想办法统一一下，要么只求最小，要么只求最大，这样才好使用线性规划的方法来求解。
+
+————————————&gt; 前方高能 ————————————&gt; 前方高能 ————————————&gt;
+
+假设已经求得\(1\)式的解为$$(\mathbf w^*, b^*)$$，那么$$|\mathbf w^*|=1$$，那么最靠近超平面的样本点与超平面距离记为$$\gamma^* = min_{i \in [m]} y_i(\mathbf {wx}_i + b)$$，那么所有点与超平面的距离均大于等于这个值，根据\(1.5\)式，距离可用$$y_i(\mathbf {wx}_i + b)$$表示，于是，
+
+$$y_i(\mathbf {w^*x}_i + b^*) \ge \gamma^*$$
+
+最小距离大于0，变换一下得，
+
+$$y_i(\mathbf {\frac {w^*} {\gamma^*} x}_i + \frac {b^*} {\gamma^*}) \ge 1, \quad \forall i \in [m]$$                                                                                       \(3\)
+
+上式表示的是限制条件。
+
+既然$$(\mathbf w^*, b^*)$$表示我们要找的超平面，那$$(\frac {\mathbf w^*}{\gamma^*}, \frac {b^*}{\gamma^*})$$ 仍然表示那个超平面，只不过超平面参数没有归一化嘛，又没有什么影响是吧，我们再用一般化的符号$$(\mathbf w, b)$$ 来表示超平面，于是
+
+$$\mathbf w = \frac {\mathbf w^*}{\gamma^*} \Rightarrow \gamma^* = \frac {|\mathbf w^* |} {|\mathbf w|} = \frac 1 {|\mathbf w|}$$                                                                                              \(4\)
+
+根据\(1\)式中的目标函数是求$$\gamma^*$$的极大值，根据\(4\)式就是求$$\mathbf w$$ 的极小值，再结合\(3\)式所代表的限制条件，问题转化为，
+
+$$argmin_{\mathbf w, b} \frac 1 2 |\mathbf w|^2 \quad s.t. \forall i \in [m], y_i(\mathbf {wx}_i + b) \ge 1$$                                                      \(5\)
+
+上式，就是支持向量机SVM的基本型，嗯，一点都不高能~
+
