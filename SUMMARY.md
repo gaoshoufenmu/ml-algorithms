@@ -8,4 +8,5 @@
   * [Strongly Convex](chapter1/strongly-convex.md)
 * [SVM](svm.md)
   * [Lagrangian Dual](svm/solution.md)
+  * [Solution](svm/solution.md)
 
