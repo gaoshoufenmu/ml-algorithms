@@ -1,6 +1,6 @@
 上一篇文章我们知道了求解超平面$$\mathbf {wx} + b = 0$$ 的问题描述
 
-$$argmin_{\mathbf w, b} \frac 1 2 |\mathbf w|^2 \quad s.t. \forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$                                                  \(1\)
+$$argmin_{\mathbf w, b} \ \frac 1 2 |\mathbf w|^2 \quad s.t. \  \forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$                                                  \(1\)
 
 显然这是一个凸二次规划问题。
 
@@ -26,7 +26,11 @@ $$L(x, \lambda, \mu) = f(x) + \sum_{j=1}^p \lambda_j h_j(x) + \sum_{k=1}^q \mu_k
 
 好吧，为了能顺利的愉快的阅读下去，这个心结还是要解开才行。
 
-令$$\theta(x) = max_{\lambda, \mu} L(x, \lambda, \mu)$$，对$$\lambda, \mu$$ 求$$L$$ 的最大值，我们要牢牢记住，$$\theta(x)$$ 表示的是每个$$x$$ 取值下的$$L$$ 最大值。于是$$\theta(x)$$ 就只和$$x$$ 有关了，然后我们分析$$x$$ 的取值对函数$$\theta(x)$$ 的影响，
+令
+
+$$\theta(x) = max_{\lambda, \mu} \ L(x, \lambda, \mu)$$                                                                                                      \(2\)
+
+对$$\lambda, \mu$$ 求$$L$$ 的最大值，我们要牢牢记住，$$\theta(x)$$ 表示的是每个$$x$$ 取值下的$$L$$ 最大值。于是$$\theta(x)$$ 就只和$$x$$ 有关了，然后我们分析$$x$$ 的取值对函数$$\theta(x)$$ 的影响，
 
 \(1\) 若$$x$$ 不满足原约束条件，即存在 $$h_j(x) \neq 0 \quad or \quad g_k(x)  \gt 0$$，那么，
 
@@ -45,4 +49,52 @@ $$\theta(x) = f(x)$$
 综合以上两点有，
 
 $$\theta(x) = \begin{cases} f(x), \quad \text{x meet constraints} \\  +\infty, \quad other \end{cases}$$
+
+现在就很明显了，在$$x$$ 的约束条件下求$$f(x)$$ 的最小值与无约束条件地求$$\theta(x)$$ 的最小值是等价的，所以优化问题转化为求
+
+$$min \quad \theta(x)$$
+
+再考虑到$$\theta(x)$$ 的定义\(2\)式，优化问题就变成了如下，
+
+$$min_{x} \ max_{\lambda, \mu} \ L(x, \lambda, \mu)$$                                                                                               \(3\)
+
+然后再根据拉格朗日对偶性，问题可转化为，
+
+$$max_{\lambda, \mu} \ min_{x} \ L(x, \lambda, \mu)$$                                                                                                \(4\)
+
+而求极值问题可以通过令偏导为0解得。
+
+* 对偶问题
+
+下面分析对偶问题。对偶性可以通过\(3\)和\(4\)式略窥一二，无非就是求最大最小顺序反过来。与上面的$$\theta(x)$$定义类似，我们定义$$\theta_D $$ 函数用以分析本小节的对偶问题，如下，
+
+$$\theta_D (\lambda, \mu) = min_x \ L(x, \lambda, \mu)$$                                                                                         \(5\)
+
+将原始问题中的$$\theta(x)$$ 函数重新记为$$\theta_P (x)$$ 以示区别。
+
+现在，将对偶问题的最优值记为$$d^*$$，
+
+$$d^* = max_{\lambda, \mu} \ \theta_D (\lambda, \mu) = max_{\lambda, \mu} \ min_x \ L(x, \lambda, \mu)$$
+
+将原始问题的最优值记为$$p^*$$，
+
+$$p^* = min_x \ \theta_P (x) = min_{x} \ max_{\lambda, \mu} \ L(x, \lambda, \mu)$$
+
+从函数的定义不难发现有以下关系，
+
+$$\theta_D (\lambda, \mu) = min_x \ L(x, \lambda, \mu) \le L(x, \lambda, \mu)  \le max_{\lambda, \mu} \ L(x, \lambda, \mu) = \theta_P(x)$$
+
+即以下关系成立，
+
+$$\theta_D (\lambda, \mu) \le \theta_P (x), \quad \forall \lambda, \mu, x$$
+
+如果原始问题与对偶问题都有最优值，则
+
+$$max_{\lambda, \mu} \ \theta_D(\lambda, \mu) \le min_x \ \theta_P (x)$$                                                                                 \(6\)
+
+然而我们仅仅得到上式这个关系还不够，还是无法证明对偶问题的最佳解就是原始问题的最佳解。
+
+~~如果\(6\)式严格不等，则称弱对偶性，存在一个对偶间隙\(duality gap\)，如果\(6\)式等式成立，则称强对偶性，此时对偶问题的最佳解与原始问题的最佳解一致。凸函数具有强对偶性，凹函数为弱对偶性，存在对偶间隙。~~
+
+
 

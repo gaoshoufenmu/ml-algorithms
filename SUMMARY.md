@@ -7,5 +7,5 @@
   * [SGD](chapter1/sgd.md)
   * [Strongly Convex](chapter1/strongly-convex.md)
 * [SVM](svm.md)
-  * [Solution](svm/solution.md)
+  * [Lagrangian Dual](svm/solution.md)
 
