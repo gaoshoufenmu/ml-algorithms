@@ -1,5 +1,9 @@
 本篇文章承接上一篇文章Solve，本篇文章中的方程序号也跟随上一篇文章的方程序号而不是从头开始。
 
+软间隔
+
+现实中的样本并非一定是线性可分的，此时，可以放宽限制条件，上一篇文章中的\(\*\)中的限制条件为$$\forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$，这表示所有点能被超平面正确划分，等号成立时的样本点位于间隔边界上，大于号成立时的样本点位于间隔边界两侧。对于线性不可分的样本，我们引入松弛变量\(slack variable\) $$\xi_i \ge 0$$，将限制条件改为$$\forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1 - \xi_i$$，允许一定数量的带内样本点或误分类点，
+
 #### 解析解
 
 根据上一篇文章\(3\)式约束条件有，
@@ -26,15 +30,19 @@ $$C = \sum_{k \neq i, j} \alpha_k y_k \mathbf x_k$$                             
 
 于是\(4\)式对$$\alpha_i$$ 求导等于0解得最佳解，
 
-$$\frac {\partial f(\alpha_i)} {\alpha_i} = 2y_i^2 \mathbf x_i^2 \alpha_i + 2y_i \mathbf x_j^2 (y_i \alpha_i - c) + 2 C y_i(\mathbf x_i - \mathbf x_j) + 2 \mathbf x_i \mathbf x_j y_i c - 4 \mathbf x_i \mathbf x_j y_i^2 \alpha_i + 1 - \frac {y_i} {y_j} = 0$$
+$$\frac {\partial f(\alpha_i)} {\alpha_i} = -\frac 1 2 [2y_i^2 \mathbf x_i^2 \alpha_i + 2y_i \mathbf x_j^2 (y_i \alpha_i - c) + 2 C y_i(\mathbf x_i - \mathbf x_j) + 2 \mathbf x_i \mathbf x_j y_i c - 4 \mathbf x_i \mathbf x_j y_i^2 \alpha_i] + 1 - \frac {y_i} {y_j} = 0$$
 
 注意到$$y_i^2 = 1$$，所以解得，
 
-$$\alpha_i = [y_i / y_j - 1 + 2 c y_i \mathbf x_j^2 - 2 C y_i (\mathbf x_i -  \mathbf x_j) - 2 c y_i \mathbf x_i \mathbf x_j] / 2(\mathbf x_i -  \mathbf x_j)^2$$
+$$\alpha_i = [1 - y_i / y_j  +  c y_i \mathbf x_j^2 -  C y_i (\mathbf x_i -  \mathbf x_j) -  c y_i \mathbf x_i \mathbf x_j] / (\mathbf x_i -  \mathbf x_j)^2$$
 
 总结，解析解为，
 
-$$\begin{cases}  C = \sum_{k \neq i, j} \alpha_k y_k \mathbf x_k \\ c = - \sum_{k \neq i,j} \alpha_k y_k \\ \alpha_i = [y_i / y_j - 1 + 2 c y_i \mathbf x_j^2 - 2 C y_i (\mathbf x_i -  \mathbf x_j) - 2 c y_i \mathbf x_i \mathbf x_j] / 2(\mathbf x_i -  \mathbf x_j)^2 \\ \alpha_j = (c - \alpha_i y_i) / y_j \end{cases}$$
+$$\begin{cases}  C = \sum_{k \neq i, j} \alpha_k y_k \mathbf x_k \\ c = - \sum_{k \neq i,j} \alpha_k y_k \\ \alpha_i = [1 - y_i / y_j  +  c y_i \mathbf x_j^2 -  C y_i (\mathbf x_i -  \mathbf x_j) -  c y_i \mathbf x_i \mathbf x_j] / (\mathbf x_i -  \mathbf x_j)^2 \\ \alpha_j = (c - \alpha_i y_i) / y_j \end{cases}$$
 
+注意，上面这个解析解有可能推导出错，毕竟没有仔细检查。
 
+启发式选择变量
+
+每次迭代需要选择两个变量$$\alpha_i, \alpha_j$$，分别对应优化问题的外层循环和内层循环，
 

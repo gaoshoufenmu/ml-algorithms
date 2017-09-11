@@ -82,9 +82,13 @@ $$y_i(\mathbf {\frac {w^*} {\gamma^*} x}_i + \frac {b^*} {\gamma^*}) \ge 1, \qua
 
 $$\mathbf w = \frac {\mathbf w^*}{\gamma^*} \Rightarrow \gamma^* = \frac {|\mathbf w^* |} {|\mathbf w|} = \frac 1 {|\mathbf w|}$$                                                                                              \(4\)
 
+由于$$\gamma^*$$ 表示的是样本点与划分超平面的最小距离，那么两个间隔边界的距离为
+
+$$2 \gamma^\* = \frac 2 {\|\mathbf w\|}                                                                                   \(5\)
+
 根据\(1\)式中的目标函数是求$$\gamma^*$$的极大值，根据\(4\)式就是求$$\mathbf w$$ 的极小值，再结合\(3\)式所代表的限制条件，问题转化为，
 
-$$argmin_{\mathbf w, b} \frac 1 2 |\mathbf w|^2 \quad s.t. \forall i \in [m], y_i(\mathbf {wx}_i + b) \ge 1$$                                                      \(5\)
+$$argmin_{\mathbf w, b} \frac 1 2 |\mathbf w|^2 \quad s.t. \forall i \in [m], y_i(\mathbf {wx}_i + b) \ge 1$$                                                      \(6\)
 
 上式，就是支持向量机SVM的基本型，嗯，一点都不高能~
 
