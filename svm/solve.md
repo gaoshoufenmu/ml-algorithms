@@ -48,7 +48,7 @@ $$\alpha_i(1- y_i(\mathbf {wx}_i + b)) = 0$$
 
 #### 求解b值
 
-对个样本点，必然$$\exists i \in [m], \alpha_i > 0$$，否则如果$$\forall i \in [m], \alpha_i = 0$$，那么根据\(2\)式可知$$\mathbf w = \mathbf 0$$，显然不是我们所要的最优解。那么，假设$$j \in [m], \alpha_j > 0$$，于是$$f(\mathbf x_j) =y_j(\mathbf {wx}_j + b)= 1$$，两边同乘以$$y_j$$，将\(2\)式代入解得，
+对所有样本点，必然$$\exists i \in [m], \alpha_i > 0$$，否则如果$$\forall i \in [m], \alpha_i = 0$$，那么根据\(2\)式可知$$\mathbf w = \mathbf 0$$，显然不是我们所要的最优解。那么，假设$$j \in [m], \alpha_j > 0$$，于是$$f(\mathbf x_j) =y_j(\mathbf {wx}_j + b)= 1$$，两边同乘以$$y_j$$，将\(2\)式代入解得，
 
 $$b = y_j -  \sum_{i=1}^m \alpha_i y_i(\mathbf x_i \mathbf x_j)$$，   其中找的一个样本点$$(\mathbf x_j , y_j)$$满足，$$j \in [m], \alpha_j > 0$$
 
