@@ -9,5 +9,6 @@
 * [SVM](svm.md)
   * [Lagrangian Dual](svm/solution.md)
   * [Solve](svm/solve.md)
+  * [Soft](svm/smo.md)
   * [SMO](svm/smo.md)
 
