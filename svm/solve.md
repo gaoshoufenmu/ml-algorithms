@@ -44,11 +44,17 @@ $$y_i(\mathbf {wx}_i + b) \ge 1 \Rightarrow y_i f(\mathbf x_i) - 1 \ge 0$$
 
 $$\alpha_i(1- y_i(\mathbf {wx}_i + b)) = 0$$
 
-即对任意样本点，总会满足$$\alpha_i = 0 $$ 或 $$f(\mathbf x_i) = 1$$，根据\(2\)式，我们知道最优解$$\mathbf w$$ 只与$$ \alpha_i > 0$$ 的点有关，此时必然有$$f(\mathbf x_i) = 1$$，也就是说，这些样本点位于最大间隔边界上，是一个支持向量，这也是支持向量机SVM的本质意义，这些点决定了间隔边界的唯一以及分离超平面的唯一。
+即对任意样本点，总会满足$$\alpha_i = 0 $$ 或 $$f(\mathbf x_i) = 1$$，根据\(2\)式，我们知道最优解$$\mathbf w$$ 只与$$ \alpha_i > 0$$ 的点有关，此时必然有$$f(\mathbf x_i) = 1$$，也就是说，这些样本点位于最大间隔边界上，是支持向量$$(\mathbf x_i, y_i)$$，这也是支持向量机SVM的本质意义，这些点决定了间隔边界的唯一以及分离超平面的唯一。
 
 #### 求解b值
 
 对个样本点，必然$$\exists i \in [m], \alpha_i > 0$$，否则如果$$\forall i \in [m], \alpha_i = 0$$，那么根据\(2\)式可知$$\mathbf w = \mathbf 0$$，显然不是我们所要的最优解。那么，假设$$j \in [m], \alpha_j > 0$$，于是$$f(\mathbf x_j) =y_j(\mathbf {wx}_j + b)= 1$$，将\(2\)式代入解得，
 
 $$b = y_j -  \sum_{i=1}^m \alpha_i y_i(\mathbf x_i \mathbf x_j)$$，   其中找的一个样本点$$(\mathbf x_j , y_j)$$满足，$$j \in [m], \alpha_j > 0$$
+
+实际计算中采用一种更好的办法，取平均值，设$$S = \lbrace i | \alpha_i > 0, i \in [m] \rbrace$$ 为所有支持向量的下标集，那么，
+
+$$b = \frac 1 {|S|} \sum_{s \in S} [y_s - \sum_{i=1}^m \alpha_i y_i (\mathbf x_i, \mathbf x_j)] = \frac 1 {|S|} \sum_{s \in S} [ys - \sum{s \in S} \alpha_i y_i (\mathbf x_i, \mathbf x_s)] $$
+
+第二个等式成立的原因前面也分析过了，$$\mathbf w$$的值只跟支持向量有关。
 
