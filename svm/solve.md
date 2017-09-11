@@ -28,7 +28,7 @@ $$\sum_{i=1}^m \alpha_i y_i = 0$$                                               
 
 $$max_{\alpha} - \frac 1 2 \sum_{i=1}^m \sum_{k=1}^m \alpha_i \alpha_k y_i y_k \mathbf x_i \mathbf x_k + \sum_{i=1}^m \alpha_i$$                                   \(4\)
 
-$$\sum_{i=1}^m \alpha_i y_i \mathbf x_i = 0$$
+$$\sum_{i=1}^m \alpha_i y_i  = 0$$
 
 $$\alpha_i \ge 0, \quad i = 1,2,...,m$$
 
@@ -40,7 +40,7 @@ $$\begin{cases} \alpha_i \ge 0 \\ y_i f(\mathbf x_i) - 1 \ge 0 \\ \alpha_i (y_i 
 
 $$y_i(\mathbf {wx}_i + b) \ge 1 \Rightarrow y_i f(\mathbf x_i) - 1 \ge 0$$
 
-另外\(\*\)式有最优解需要满足KKT（Karush-Kuhn-Tucher）条件，于是有第三项，
+另外\(\*\)式有最优解需要满足KKT（Karush-Kuhn-Tucher）条件（参见上一篇文章中关于KKT条件的第四条强对偶性条件），于是有第三项，
 
 $$\alpha_i(1- y_i(\mathbf {wx}_i + b)) = 0$$
 
@@ -48,7 +48,7 @@ $$\alpha_i(1- y_i(\mathbf {wx}_i + b)) = 0$$
 
 #### 求解b值
 
-对个样本点，必然$$\exists i \in [m], \alpha_i > 0$$，否则如果$$\forall i \in [m], \alpha_i = 0$$，那么根据\(2\)式可知$$\mathbf w = \mathbf 0$$，显然不是我们所要的最优解。那么，假设$$j \in [m], \alpha_j > 0$$，于是$$f(\mathbf x_j) =y_j(\mathbf {wx}_j + b)= 1$$，将\(2\)式代入解得，
+对个样本点，必然$$\exists i \in [m], \alpha_i > 0$$，否则如果$$\forall i \in [m], \alpha_i = 0$$，那么根据\(2\)式可知$$\mathbf w = \mathbf 0$$，显然不是我们所要的最优解。那么，假设$$j \in [m], \alpha_j > 0$$，于是$$f(\mathbf x_j) =y_j(\mathbf {wx}_j + b)= 1$$，两边同乘以$$y_j$$，将\(2\)式代入解得，
 
 $$b = y_j -  \sum_{i=1}^m \alpha_i y_i(\mathbf x_i \mathbf x_j)$$，   其中找的一个样本点$$(\mathbf x_j , y_j)$$满足，$$j \in [m], \alpha_j > 0$$
 
@@ -57,4 +57,14 @@ $$b = y_j -  \sum_{i=1}^m \alpha_i y_i(\mathbf x_i \mathbf x_j)$$，   其中找
 $$b = \frac 1 {|S|} \sum_{s \in S} [y_s - \sum_{i=1}^m \alpha_i y_i (\mathbf x_i, \mathbf x_j)] = \frac 1 {|S|} \sum_{s \in S} [y_s - \sum_{s \in S} \alpha_i y_i (\mathbf x_i, \mathbf x_s)] $$
 
 第二个等式成立的原因前面也分析过了，$$\mathbf w$$的值只跟支持向量有关。
+
+#### SMO
+
+求对偶问题\(4\)的最佳解$$\alpha^*$$可以使用动态规划，然而在样本点很多的情况下复杂度会变得很高，于是有高人就研究出了一个更高效的算法Sequential Minimal Optimization \(SMO\)。
+
+SMO的主要思路是将\(4\)式这个二次规划问题分成一系列的很小的二次规划问题。
+
+SMO每次选取两个变量$$\alpha_i, \alpha_j$$，并固定其他参数，选择两个变量的原因是因为约束\(3\)式，选择一个变量，而固定其他$$m-1$$变量的话，那这个变量本身已经可以被计算出来了。好了，选择了两个变量$$\alpha_i , \alpha_j$$后，求解\(4\)式的最优解，
+
+两个变量$$\alpha_i , \alpha_j$$上的优化问题可以有解析解，避免了数值解，从而计算效率大大提升。于是我们将SMO分成两个部分讨论：1）两个拉格朗日乘子变量上的优化问题的解析解；2）启发式地决定选择哪两个拉格朗日乘子。
 
