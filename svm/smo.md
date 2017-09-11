@@ -52,6 +52,22 @@ $$\sum_{i=1}^m y_i \alpha_i = 0$$
 
 $$0 \le \alpha_i \le C, \ \forall i \in [m]$$
 
+我们给出\(5\)的KKT条件，
+
+$$\alpha_i \ge 0, \quad \mu_i \ge 0$$                   \(拉格朗日乘子的限制条件\)
+
+$$y_i f(\mathbf x_i) - 1 + \xi_i \ge 0$$        （原始优化问题的约束条件）
+
+$$\alpha_i [y_i f(\mathbf x_i) - 1 + \xi_i] = 0$$  （强对偶性条件）
+
+$$\mu_i \xi_i = 0$$                                 （强对偶性条件）
+
+$$\xi_i \ge 0 $$                                     （软间隔约束放宽条件）
+
+根据以上5个条件，可以得出以下结论（读者可以自己推导），
+
+$$\begin {cases} \alpha_i = 0 \Leftrightarrow y_i f(\mathbf x_i) \ge 1 \\ 0 \lt \alpha_i \lt C \Leftrightarrow y_i f(\mathbf x_i) = 1 \\ \alpha_i = C \Leftrightarrow y_i f(\mathbf x_i)  \le 1 \end{cases}$$
+
 #### 解析解
 
 根据上一篇文章\(3\)式约束条件有，
