@@ -54,7 +54,7 @@ $$b = y_j -  \sum_{i=1}^m \alpha_i y_i(\mathbf x_i \mathbf x_j)$$，   其中找
 
 实际计算中采用一种更好的办法，取平均值，设$$S = \lbrace i | \alpha_i > 0, i \in [m] \rbrace$$ 为所有支持向量的下标集，那么，
 
-$$b = \frac 1 {|S|} \sum_{s \in S} [y_s - \sum_{i=1}^m \alpha_i y_i (\mathbf x_i, \mathbf x_j)] = \frac 1 {|S|} \sum_{s \in S} [ys - \sum{s \in S} \alpha_i y_i (\mathbf x_i, \mathbf x_s)] $$
+$$b = \frac 1 {|S|} \sum_{s \in S} [y_s - \sum_{i=1}^m \alpha_i y_i (\mathbf x_i, \mathbf x_j)] = \frac 1 {|S|} \sum_{s \in S} [y_s - \sum_{s \in S} \alpha_i y_i (\mathbf x_i, \mathbf x_s)] $$
 
 第二个等式成立的原因前面也分析过了，$$\mathbf w$$的值只跟支持向量有关。
 
