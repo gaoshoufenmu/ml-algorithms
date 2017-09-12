@@ -20,13 +20,31 @@ $$\alpha_1 y_1 + \alpha_2 y_2 = \zeta, \quad \alpha_1 \ge 0, \alpha_1 \ge 0$$   
 
 $$\zeta = - \sum_{k \neq 1,2} \alpha_k y_k$$
 
-由于$$y_i \in \lbrace -1, 1 \rbrace, \forall i \in [m]$$，有如下图，
+由于$$y_i \in \lbrace -1, 1 \rbrace, \forall i \in [m]$$，当$$y_1 = -y_2$$ 时，如下图，
 
+![](/assets/SMO_constraint.png)
 
+我们用$$\alpha2$$ 来表示$$\alpha_1$$，所以考察$$\alpha_2$$ 的范围，从上图中可以看的很清楚了，
 
-根据\(5\)式得到
+1\) 当$$\zeta \ge 0 $$ 时，$$\alpha_2$$ 的上限$$H$$ 为$$C- \zeta \le C$$，$$\alpha_2$$ 的下限$$L$$ 恒为$$0 \ge -\zeta$$
 
-$$\alpha_j = \frac {c - \alpha_i y_i} {y_j}$$                                                                                                                             \(6\)
+2\) 当$$\zeta \le 0$$ 时，$$\alpha_2$$ 的上限$$H$$ 恒为$$C \le C - \zeta$$，$$\alpha_2$$ 的下限$$L$$ 为$$- \zeta \ge 0$$
+
+综合以上两点得到$$\alpha_2$$ 的上下限，
+
+$$L = max(0, -\zeta) \quad H = min(C,  C - \zeta)$$
+
+或，
+
+$$L = max(0, \alpha_2 - \alpha_1) \quad H = min(C,  C + \alpha_2 - \alpha_1)$$
+
+同理，当$$y_1=y_2$$时，$$\alpha_2$$ 的上下限为，
+
+$$L = max(0, \alpha_2 + \alpha_1 -C) \quad H = min(C,  \alpha_2 + \alpha_1)$$
+
+根据\(9\)式得到
+
+$$\alpha_1 = y_1(\zeta - y_2 \alpha_2)$$                                                                                                                             \(6\)
 
 代入上一篇文章中的优化问题\(4\)式消去$$\alpha_j$$，得到只包含$$\alpha_i$$ 一个变量的二次规划问题，此外还有约束$$\alpha_i \ge 0$$，于是，求其最佳解通过对$$\alpha_i$$ 求导并令其等于0，
 
