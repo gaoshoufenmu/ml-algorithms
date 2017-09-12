@@ -42,45 +42,57 @@ $$L = max(0, \alpha_2 - \alpha_1) \quad H = min(C,  C + \alpha_2 - \alpha_1)$$
 
 $$L = max(0, \alpha_2 + \alpha_1 -C) \quad H = min(C,  \alpha_2 + \alpha_1)$$
 
-根据\(9\)式得到
-
-$$\alpha_1 = y_1(\zeta - y_2 \alpha_2)$$                                                                                                                             \(6\)
-
 将$$\alpha_1 , \alpha_2$$ 之外的看作常量，将上一篇文章中的\(6\)式目标函数改写为如下，
 
-$$\Psi = \frac 1 2(\mathbf x_1^2 \alpha_1^2 + \mathbf x_2^2 \lambda_2^2 + 2s \cdot \mathbf x_1 \mathbf x_2 \alpha_1 \alpha_2) + v_1 y_1 \alpha_1 + v_2 y_2 \alpha_2 - \alpha_1 - \alpha_2 + \Psi_{const}$$
+$$\Psi = \frac 1 2(\mathbf x_1^2 \alpha_1^2 + \mathbf x_2^2 \alpha_2^2 + 2s \cdot \mathbf x_1 \mathbf x_2 \alpha_1 \alpha_2) + v_1 y_1 \alpha_1 + v_2 y_2 \alpha_2 - \alpha_1 - \alpha_2 + \Psi_{const}$$               \(10\)
 
 $$s = y_1y_2$$
 
-$$v_i = \sum_{j=3}^m y_j \alpha_j \mathbf x_j \mathbf x_i, \quad i = 1,2$$
+$$v_i = \sum_{j=3}^m y_j \alpha_j \mathbf x_j \mathbf x_i = f(\mathbf x_i) + b^{(p)} - y_1 \mathbf x_1 \mathbf x_i \alpha_1^{(p)} - y_2 \mathbf x_2 \mathbf x_i \alpha_2^{(p)}, \quad i = 1,2$$
+
+上式中，带$$(p)$$ 上标的表示上一次迭代得到的值（在本次迭代中也看作常数），由于
+
+$$y_1 \alpha_1^{(p)} + y_2 \alpha_2^{(p)} = \zeta = y_1 \alpha_1 +y_2 \alpha_2$$
+
+$$\zeta$$ 的值在本次迭代前后不变，上式两边同时乘以$$y_1$$，
+
+$$\alpha_1 + s \alpha_2 = \alpha_1^{(p)} + s \alpha_2^{(p)} = w \Rightarrow \alpha_1 = w - s \alpha_2$$
+
+其中$$w = y_1 \zeta$$。
+
+代入\(10\)式得到关于$$\alpha_2$$ 的二次函数，
+
+$$\Psi = \frac 1 2 K_{11} (w - s \alpha_2)^2 + \frac 1 2 K_{22} \alpha_2^2 + s K_{12}(w - s \alpha_2) \alpha_2 + v_1 y_1(w -s \alpha_2) + v_2 y_2 \alpha_2 - (w - s \alpha_2) - \alpha_2 + \Psi_{const}$$
+
+$$K_{ij} = \mathbf x_i \mathbf x_j$$
+
+求导，令导数等于0求得极值解，
+
+$$\frac {d \Psi} {d \alpha2} = -s K_{11} (w - s \alpha_2) + K_{22} \alpha_2 + s K_{12} (w - s \alpha_2) - K_{12} \alpha_2 - v_1 y_2 + v_2 y_2 + s -1 = 0$$
+
+对上式化简和移项得，
+
+$$(K_{11} + K_{22}  - 2K_{12}) \alpha_2 = sw(K_{11} - K_{12}) + y_2(v_1 - v_2) + 1 - s$$                                            \(11\)
+
+综合$$w, s, v_1, v_2, \zeta$$  表达式以及上式，我们只看右边项，
+
+$$\begin{align} & sw (K_{11} - K_{12}) - y_2(v_1 -v_2) + 1 - s \\ & = sw (K_{11} - K_{12}) + y_2[f_1 + b^{(p)}  - y_1 K_{11} \alpha_1^{(p)} - y_2 K_{12} \alpha_2^{(p)} - f_2 - b^{(p)} + y_1 K_{12} \alpha_1^{(p)} + y_2 K_{22} \alpha_2^{(p)}] + 1 - s \\ & = sw(K_{11}-K_{12}) + y_2[f_1 - f_2 - y_1(K_{11} - K_{12}) \alpha_1^{(p)} - y_2(K_{12} - K_{22}) \alpha_2^{(p)}] + 1 - s \\ & = sw(K_{11} - K_{12}) + y_2(f_1- f_2) - y_1y_2(K_{11} - K_{12}) \alpha_1^{(p)} - y_2^2(K_{12} - K_{22})\alpha_2^{(p)} + 1 - s \\ & = sw(K_{11} - K_{12}) + y_2(f_1 -f_2) - s(K_{11} - K_{12})(w - s \alpha_2^{(p)}) - (K_{12} - K_{22}) \alpha_2^{(p)} + 1 -s \\ & = y_2(f_1 - f_2)  + (K_{11} - K_{12}) \alpha_2^{(p)} - (K_{12} - K_{22}) \alpha_2^{(p)} + 1 - s \\ & = y_2(f_1 -f_2) (K_{11} + K_{22} - 2K_{12}) \alpha_2^{(p)} + y_2^2 - y_2y_1 \\ & = (K_{11} + K_{22} - 2 K_{12}) \alpha_2^{(p)} + y_2[f_1 - y_1 - (f_2 - y_2)] \end{align}$$
+
+其中，$$f_i = f(\mathbf x_i)$$
+
+记
+
+$$\eta = (K_{11} + K_{22} - 2 K_{12})$$
+
+代入\(11\)式得到，
+
+$$\alpha_2 = \alpha_2^{(p)} + \frac {y_2} \eta (E_1- E_2)$$                                                                                                               \(12\)
+
+其中，$$E_i = f_i-y_i$$ 表示第$$i$$ 个样本点的误差。
+
+\(12\)式就是迭代后$$\alpha_2$$的新值，然而这个新值不一定满足上面分析的$$\alpha_2$$ 的上下限，所以我们还需要对这个迭代后计算的$$\alpha_2$$ 值进行修剪如下，
+
+$$ \alpha_2^{new, clipped} =   \begin{cases} H \quad & if \quad \alpha2^{new} \ge H \\ \alpha2^{new} \quad & if \quad L \lt \alpha2^{new} \lt H \\ L \quad & if \quad \alpha2^{new} \le L \end{cases}$$
 
 
-
-代入上一篇文章中的优化问题\(4\)式消去$$\alpha_j$$，得到只包含$$\alpha_i$$ 一个变量的二次规划问题，此外还有约束$$\alpha_i \ge 0$$，于是，求其最佳解通过对$$\alpha_i$$ 求导并令其等于0，
-
-先看\(4\)中的两重求和项，
-
-$$(\alpha_i y_i \mathbf x_i + \alpha_j y_j \mathbf x_j + C)^2 = (\alpha_i y_i \mathbf x_i)^2 + (\alpha_j y_j \mathbf x_j)^2 + C^2 + 2(\alpha_i y_i \mathbf x_i + \alpha_j y_j \mathbf x_j)C + 2(\alpha_i y_i \mathbf x_i  \cdot \alpha_j y_j \mathbf x_j)$$
-
-其中常数项C为，
-
-$$C = \sum_{k \neq i, j} \alpha_k y_k \mathbf x_k$$                                                                                                                \(7\)
-
-于是\(4\)式对$$\alpha_i$$ 求导等于0解得最佳解，
-
-$$\frac {\partial f(\alpha_i)} {\alpha_i} = -\frac 1 2 [2y_i^2 \mathbf x_i^2 \alpha_i + 2y_i \mathbf x_j^2 (y_i \alpha_i - c) + 2 C y_i(\mathbf x_i - \mathbf x_j) + 2 \mathbf x_i \mathbf x_j y_i c - 4 \mathbf x_i \mathbf x_j y_i^2 \alpha_i] + 1 - \frac {y_i} {y_j} = 0$$
-
-注意到$$y_i^2 = 1$$，所以解得，
-
-$$\alpha_i = [1 - y_i / y_j  +  c y_i \mathbf x_j^2 -  C y_i (\mathbf x_i -  \mathbf x_j) -  c y_i \mathbf x_i \mathbf x_j] / (\mathbf x_i -  \mathbf x_j)^2$$
-
-总结，解析解为，
-
-$$\begin{cases}  C = \sum_{k \neq i, j} \alpha_k y_k \mathbf x_k \\ c = - \sum_{k \neq i,j} \alpha_k y_k \\ \alpha_i = [1 - y_i / y_j  +  c y_i \mathbf x_j^2 -  C y_i (\mathbf x_i -  \mathbf x_j) -  c y_i \mathbf x_i \mathbf x_j] / (\mathbf x_i -  \mathbf x_j)^2 \\ \alpha_j = (c - \alpha_i y_i) / y_j \end{cases}$$
-
-注意，上面这个解析解有可能推导出错，毕竟没有仔细检查。
-
-启发式选择变量
-
-每次迭代需要选择两个变量$$\alpha_i, \alpha_j$$，分别对应优化问题的外层循环和内层循环，
 
