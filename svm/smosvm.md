@@ -86,13 +86,15 @@ $$\eta = (K_{11} + K_{22} - 2 K_{12})$$
 
 代入\(11\)式得到，
 
-$$\alpha_2 = \alpha_2^{(p)} + \frac {y_2} \eta (E_1- E_2)$$                                                                                                               \(12\)
+$$\alpha_2^{new} = \alpha_2^{(p)} + \frac {y_2} \eta (E_1- E_2)$$                                                                                                               \(12\)
 
 其中，$$E_i = f_i-y_i$$ 表示第$$i$$ 个样本点的误差。
 
 \(12\)式就是迭代后$$\alpha_2$$的新值，然而这个新值不一定满足上面分析的$$\alpha_2$$ 的上下限，所以我们还需要对这个迭代后计算的$$\alpha_2$$ 值进行修剪如下，
 
-$$ \alpha_2^{new, clipped} =   \begin{cases} H \quad & if \quad \alpha2^{new} \ge H \\ \alpha2^{new} \quad & if \quad L \lt \alpha2^{new} \lt H \\ L \quad & if \quad \alpha2^{new} \le L \end{cases}$$
+$$ \alpha_2^{new, clipped} =   \begin{cases} H \quad & if \quad \alpha_2^{new} \ge H \\ \alpha_2^{new} \quad & if \quad L \lt \alpha_2^{new} \lt H \\ L \quad & if \quad \alpha_2^{new} \le L \end{cases}$$
 
+于是，
 
+$$\alpha_1^{new} = w - s \alpha_2^{new} = \alpha_1^{(p)} + s \alpha_2^{(p)} - s \alpha_2^{new} = \alpha_1^{(p)} + s(\alpha_2^{(p)} - \alpha_2^{new, clipped}) $$                             \(13\)
 
