@@ -12,6 +12,8 @@ SMO每次选取两个变量$$\alpha_i, \alpha_j$$，并固定其他参数，选�
 
 将这两个拉格朗日乘子记作$$\alpha_1, \alpha_2$$，分别表示每步迭代中的第一个和第二个乘子，
 
+##### 取值范围
+
 根据上一篇文章\(7\)式约束条件有，
 
 $$\alpha_1 y_1 + \alpha_2 y_2 = \zeta, \quad \alpha_1 \ge 0, \alpha_1 \ge 0$$                                                                                   \(9\)
@@ -42,13 +44,15 @@ $$L = max(0, \alpha_2 - \alpha_1) \quad H = min(C,  C + \alpha_2 - \alpha_1)$$
 
 $$L = max(0, \alpha_2 + \alpha_1 -C) \quad H = min(C,  \alpha_2 + \alpha_1)$$
 
+##### 最佳解
+
 将$$\alpha_1 , \alpha_2$$ 之外的看作常量，将上一篇文章中的\(6\)式目标函数改写为如下，
 
 $$\Psi = \frac 1 2(\mathbf x_1^2 \alpha_1^2 + \mathbf x_2^2 \alpha_2^2 + 2s \cdot \mathbf x_1 \mathbf x_2 \alpha_1 \alpha_2) + v_1 y_1 \alpha_1 + v_2 y_2 \alpha_2 - \alpha_1 - \alpha_2 + \Psi_{const}$$               \(10\)
 
 $$s = y_1y_2$$
 
-$$v_i = \sum_{j=3}^m y_j \alpha_j \mathbf x_j \mathbf x_i = f(\mathbf x_i) + b^{(p)} - y_1 \mathbf x_1 \mathbf x_i \alpha_1^{(p)} - y_2 \mathbf x_2 \mathbf x_i \alpha_2^{(p)}, \quad i = 1,2$$
+$$v_i = \sum_{j=3}^m y_j \alpha_j \mathbf x_j \mathbf x_i = f(\mathbf x_i) - b^{(p)} - y_1 \mathbf x_1 \mathbf x_i \alpha_1^{(p)} - y_2 \mathbf x_2 \mathbf x_i \alpha_2^{(p)}, \quad i = 1,2$$
 
 上式中，带$$(p)$$ 上标的表示上一次迭代得到的值（在本次迭代中也看作常数），由于
 
@@ -56,7 +60,7 @@ $$y_1 \alpha_1^{(p)} + y_2 \alpha_2^{(p)} = \zeta = y_1 \alpha_1 +y_2 \alpha_2$$
 
 $$\zeta$$ 的值在本次迭代前后不变，上式两边同时乘以$$y_1$$，
 
-$$\alpha_1 + s \alpha_2 = \alpha_1^{(p)} + s \alpha_2^{(p)} = w \Rightarrow \alpha_1 = w - s \alpha_2$$
+$$\alpha_1 + s \alpha_2 = \alpha_1^{(p)} + s \alpha_2^{(p)} = w \Rightarrow \alpha_1 = w - s \alpha_2$$                                                                     
 
 其中$$w = y_1 \zeta$$。
 
@@ -76,7 +80,7 @@ $$(K_{11} + K_{22}  - 2K_{12}) \alpha_2 = sw(K_{11} - K_{12}) + y_2(v_1 - v_2) +
 
 综合$$w, s, v_1, v_2, \zeta$$  表达式以及上式，我们只看右边项，
 
-$$\begin{align} & sw (K_{11} - K_{12}) - y_2(v_1 -v_2) + 1 - s \\ & = sw (K_{11} - K_{12}) + y_2[f_1 + b^{(p)}  - y_1 K_{11} \alpha_1^{(p)} - y_2 K_{12} \alpha_2^{(p)} - f_2 - b^{(p)} + y_1 K_{12} \alpha_1^{(p)} + y_2 K_{22} \alpha_2^{(p)}] + 1 - s \\ & = sw(K_{11}-K_{12}) + y_2[f_1 - f_2 - y_1(K_{11} - K_{12}) \alpha_1^{(p)} - y_2(K_{12} - K_{22}) \alpha_2^{(p)}] + 1 - s \\ & = sw(K_{11} - K_{12}) + y_2(f_1- f_2) - y_1y_2(K_{11} - K_{12}) \alpha_1^{(p)} - y_2^2(K_{12} - K_{22})\alpha_2^{(p)} + 1 - s \\ & = sw(K_{11} - K_{12}) + y_2(f_1 -f_2) - s(K_{11} - K_{12})(w - s \alpha_2^{(p)}) - (K_{12} - K_{22}) \alpha_2^{(p)} + 1 -s \\ & = y_2(f_1 - f_2)  + (K_{11} - K_{12}) \alpha_2^{(p)} - (K_{12} - K_{22}) \alpha_2^{(p)} + 1 - s \\ & = y_2(f_1 -f_2) (K_{11} + K_{22} - 2K_{12}) \alpha_2^{(p)} + y_2^2 - y_2y_1 \\ & = (K_{11} + K_{22} - 2 K_{12}) \alpha_2^{(p)} + y_2[f_1 - y_1 - (f_2 - y_2)] \end{align}$$
+$$\begin{align} & sw (K_{11} - K_{12}) - y_2(v_1 -v_2) + 1 - s \\ & = sw (K_{11} - K_{12}) + y_2[f_1 - b^{(p)}  - y_1 K_{11} \alpha_1^{(p)} - y_2 K_{12} \alpha_2^{(p)} - f_2 + b^{(p)} + y_1 K_{12} \alpha_1^{(p)} + y_2 K_{22} \alpha_2^{(p)}] + 1 - s \\ & = sw(K_{11}-K_{12}) + y_2[f_1 - f_2 - y_1(K_{11} - K_{12}) \alpha_1^{(p)} - y_2(K_{12} - K_{22}) \alpha_2^{(p)}] + 1 - s \\ & = sw(K_{11} - K_{12}) + y_2(f_1- f_2) - y_1y_2(K_{11} - K_{12}) \alpha_1^{(p)} - y_2^2(K_{12} - K_{22})\alpha_2^{(p)} + 1 - s \\ & = sw(K_{11} - K_{12}) + y_2(f_1 -f_2) - s(K_{11} - K_{12})(w - s \alpha_2^{(p)}) - (K_{12} - K_{22}) \alpha_2^{(p)} + 1 -s \\ & = y_2(f_1 - f_2)  + (K_{11} - K_{12}) \alpha_2^{(p)} - (K_{12} - K_{22}) \alpha_2^{(p)} + 1 - s \\ & = y_2(f_1 -f_2) (K_{11} + K_{22} - 2K_{12}) \alpha_2^{(p)} + y_2^2 - y_2y_1 \\ & = (K_{11} + K_{22} - 2 K_{12}) \alpha_2^{(p)} + y_2[f_1 - y_1 - (f_2 - y_2)] \end{align}$$
 
 其中，$$f_i = f(\mathbf x_i)$$
 
@@ -88,7 +92,7 @@ $$\eta = (K_{11} + K_{22} - 2 K_{12})$$
 
 $$\alpha_2^{new} = \alpha_2^{(p)} + \frac {y_2} \eta (E_1- E_2)$$                                                                                                               \(12\)
 
-其中，$$E_i = f_i-y_i$$ 表示第$$i$$ 个样本点的误差。
+其中，$$E_i = f_i-y_i$$ 表示第$$i$$ 个样本点的迭代前误差。
 
 \(12\)式就是迭代后$$\alpha_2$$的新值，然而这个新值不一定满足上面分析的$$\alpha_2$$ 的上下限，所以我们还需要对这个迭代后计算的$$\alpha_2$$ 值进行修剪如下，
 
@@ -97,4 +101,40 @@ $$ \alpha_2^{new, clipped} =   \begin{cases} H \quad & if \quad \alpha_2^{new} \
 于是，
 
 $$\alpha_1^{new} = w - s \alpha_2^{new} = \alpha_1^{(p)} + s \alpha_2^{(p)} - s \alpha_2^{new} = \alpha_1^{(p)} + s(\alpha_2^{(p)} - \alpha_2^{new, clipped}) $$                             \(13\)
+
+下面我们分析为何可以通过对目标函数求导就可以求得最佳解，目标函数的二次导为，
+
+$$\Psi'' = \frac {\Psi'} {d \alpha_2} = K_{11} + K_{22} - 2 K_{12} = \eta$$
+
+1. 当$$\eta > 0 $$ 时，$$\Psi$$ 是下凸函数，最小值在$$arg_{\alpha_2} \ \Psi '$$ 处
+2. 当$$\eta = 0$$ 时，$$\Psi$$ 是单调函数，最小值在左端点（单调增）或右端点（单调减）处
+3. 当$$\eta < 0$$ 时，$$\Psi$$ 是上凹函数，最小值在左端点或右端点处（比较一下就知道究竟是哪个端点）
+
+所以实际计算时，如果碰到$$\eta \le 0$$ 的情况，需要计算两个端点处的$$\Psi$$值，然后比较得出最小值对应的是$$\alpha_2 = L$$ 还是$$\alpha_2 =H$$，计算过程如下，
+
+对迭代后的$$\alpha_2$$，
+
+根据\(13\)式，迭代后的
+
+ $$\alpha_1 = \alpha_1^{(p)} + s(\alpha_2^{(p)} - \alpha_2) $$
+
+因为我们要计算$$\Psi$$，根据\(10\)式，除了$$\alpha_1, \alpha_2$$，其他都看作常量，所以$$v_i$$ 中的$$f_i$$ 使用迭代前的值，如下
+
+$$ f_1 = \sum_{j=1}^m y_j \alpha_j K_{1j} + b = \sum_{j=3}^m y_j \alpha_j K_{1j} + y_1\alpha_1^{(p)} K_{11} + y_2 \alpha_2^{(p)} K_{12} + b$$
+
+于是（忽略常数项，因为不影响$$\Psi|_{\alpha_2 = L} \ ? \ \Psi| _{\alpha_2 = H}$$ 的大小关系），
+
+$$\Psi = \frac 1 2 (K_{11} \alpha_1^2 + K_{22} \alpha_2^2 + 2s K_{12} \alpha_1 \alpha_2) + (v_1 y_1 - 1) \alpha_1 + (v_2 y_2 - 1) \alpha_2 $$
+
+其中，
+
+$$g_1 = v_1y_1 - 1 = y_1(f_1 - b - y_1 K_{11} \alpha_1^{(p)} - y_2K_{12} \alpha_2^{(p)}) - y_1^2 =y_1(f_1 - y_1 - b) - K_{11} \alpha_1^{(p)} - s K_{12} \alpha_2^{(p)} $$
+
+$$g_2 = v_2y_2 - 1 = y_2(f_2 - b - y_1 K_{12} \alpha_1^{(p)} - y_2K_{22} \alpha_2^{(p)}) - y_2^2 =y_2(f_2 - y_2 - b) - s K_{12} \alpha_1^{(p)} -  K_{22} \alpha_2^{(p)}$$
+
+综合上式，
+
+$$\begin{cases} \Psi = \frac 1 2 K_{11}  \alpha_1^2 + \frac 1 2 K_{22} \alpha_2 + s K_{12} \alpha_1 \alpha_2 + g_1 \alpha_1 + g_2 \alpha_2 \\ \alpha_1 = \alpha_1^{(p)} + s(\alpha_2^{(p)} - \alpha_2) \\ g_1 =y_1(f_1 - y_1 - b) - K_{11} \alpha_1^{(p)} - s K_{12} \alpha_2^{(p)} \\ g_2 =y_2(f_2 - y_2 - b) - s K_{12} \alpha_1^{(p)} -  K_{22} \alpha_2^{(p)} \end{cases}$$
+
+于是分别将$$\alpha_2 = L$$ 和$$\alpha_2 =H$$ 代入上面方程组求的$$\Psi$$ 较小值确定$$\alpha_2$$应该取哪个端点。
 
