@@ -46,6 +46,16 @@ $$L = max(0, \alpha_2 + \alpha_1 -C) \quad H = min(C,  \alpha_2 + \alpha_1)$$
 
 $$\alpha_1 = y_1(\zeta - y_2 \alpha_2)$$                                                                                                                             \(6\)
 
+将$$\alpha_1 , \alpha_2$$ 之外的看作常量，将上一篇文章中的\(6\)式目标函数改写为如下，
+
+$$\Psi = \frac 1 2(\mathbf x_1^2 \alpha_1^2 + \mathbf x_2^2 \lambda_2^2 + 2s \cdot \mathbf x_1 \mathbf x_2 \alpha_1 \alpha_2) + v_1 y_1 \alpha_1 + v_2 y_2 \alpha_2 - \alpha_1 - \alpha_2 + \Psi_{const}$$
+
+$$s = y_1y_2$$
+
+$$v_i = \sum_{j=3}^m y_j \alpha_j \mathbf x_j \mathbf x_i, \quad i = 1,2$$
+
+
+
 代入上一篇文章中的优化问题\(4\)式消去$$\alpha_j$$，得到只包含$$\alpha_i$$ 一个变量的二次规划问题，此外还有约束$$\alpha_i \ge 0$$，于是，求其最佳解通过对$$\alpha_i$$ 求导并令其等于0，
 
 先看\(4\)中的两重求和项，
