@@ -70,7 +70,7 @@ $$\xi_i \ge 0 $$                                     （软间隔约束放宽条
 
 $$\forall i \in [m]$$，
 
-$$\begin {cases} \alpha_i = 0 \Leftrightarrow y_i f(\mathbf x_i) \ge 1 \\ 0 \lt \alpha_i \lt C \Leftrightarrow y_i f(\mathbf x_i) = 1 \\ \alpha_i = C \Leftrightarrow y_i f(\mathbf x_i)  \le 1 \end{cases}$$
+$$\begin {cases} \alpha_i = 0 \Leftrightarrow y_i f(\mathbf x_i) \ge 1 \\ 0 \lt \alpha_i \lt C \Leftrightarrow y_i f(\mathbf x_i) = 1 \\ \alpha_i = C \Leftrightarrow y_i f(\mathbf x_i)  \le 1 \end{cases}$$                                                                       \(KKT\)
 
 上面对$$\mathbf w$$ 求偏导时已经得到$$\mathbf w$$ 的解析解，于是，
 
