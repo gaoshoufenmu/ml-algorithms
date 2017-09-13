@@ -14,7 +14,7 @@ SMO每次选取两个变量$$\alpha_i, \alpha_j$$，并固定其他参数，选�
 
 ##### 取值范围
 
-根据上一篇文章\(7\)式约束条件有，
+根据上一篇文章[Soft](/svm/smo.md)中\(7\)式约束条件有，
 
 $$\alpha_1 y_1 + \alpha_2 y_2 = \zeta, \quad \alpha_1 \ge 0, \alpha_1 \ge 0$$                                                                                   \(9\)
 
@@ -46,7 +46,7 @@ $$L = max(0, \alpha_2 + \alpha_1 -C) \quad H = min(C,  \alpha_2 + \alpha_1)$$
 
 ##### 最佳解
 
-将$$\alpha_1 , \alpha_2$$ 之外的看作常量，将上一篇文章中的\(6\)式目标函数改写为如下，
+将$$\alpha_1 , \alpha_2$$ 之外的看作常量，将上一篇文章[Soft](/svm/smo.md)中的\(6\)式目标函数改写为如下，
 
 $$\Psi = \frac 1 2(\mathbf x_1^2 \alpha_1^2 + \mathbf x_2^2 \alpha_2^2 + 2s \cdot \mathbf x_1 \mathbf x_2 \alpha_1 \alpha_2) + v_1 y_1 \alpha_1 + v_2 y_2 \alpha_2 - \alpha_1 - \alpha_2 + \Psi_{const}$$               \(10\)
 

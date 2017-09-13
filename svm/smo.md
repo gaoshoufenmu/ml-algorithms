@@ -1,4 +1,4 @@
-本篇文章承接上一篇文章Solve，本篇文章中的方程序号也跟随上一篇文章的方程序号而不是从头开始。
+本篇文章承接上一篇文章[Solve](/svm/solve.md)，本篇文章中的方程序号也跟随上一篇文章的方程序号而不是从头开始。
 
 #### 软间隔
 
@@ -20,7 +20,7 @@ $$min_{\mathbf w, b, \mathbf \xi} \ \frac 1 2 |\mathbf w|^2 + C \sum_{i=1}^m \xi
 
 $$L(\mathbf w, b, \xi, \alpha, \mu) = \frac 1 2 |\mathbf w|^2 + C \sum_ {i=1}^m \xi_i + \sum_ {i=1}^m \alpha_i [1 - \xi_i - y_i (\mathbf {wx}_i + b)] - \sum_{i=1}^m \mu_i \xi_i$$
 
-根据本章第二篇文件对拉格朗日对偶性的介绍，此处对偶问题为，
+根据本章第二篇文章[Lagrangian Dual](/svm/solution.md)对拉格朗日对偶性的介绍，此处对偶问题为，
 
 $$max_{\alpha, \mu} \ min_{\mathbf w, b, \xi} \ L$$
 
