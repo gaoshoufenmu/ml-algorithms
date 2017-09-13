@@ -1,6 +1,6 @@
 本篇文章承接上一篇文章Solve，本篇文章中的方程序号也跟随上一篇文章的方程序号而不是从头开始。
 
-软间隔
+#### 软间隔
 
 现实中的样本并非一定是线性可分的，此时，可以放宽限制条件，本章第一篇文章中的\(6\)式中的限制条件为$$\forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$，这表示所有点能被超平面正确划分，等号成立时的样本点位于间隔边界上，大于号成立时的样本点位于间隔边界两侧。对于线性不可分的样本，我们引入松弛变量\(slack variable\) $$\xi_i \ge 0$$，将限制条件改为$$\forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1 - \xi_i$$，允许一定数量的带内样本点或误分类点，根据本章第一篇文章中的\(5\)式知道带内宽度为$$\frac 2 {|\mathbf w|}$$，划分超平面位于带内中间位置，如下图，
 
@@ -14,7 +14,7 @@ $$min_{\mathbf w, b, \mathbf \xi} \ \frac 1 2 |\mathbf w|^2 + C \sum_{i=1}^m \xi
 
 其中$$C$$ 是带内间距和误分类点之间的平衡因子，$$C$$ 越大，对误分类点的惩罚就越大。对$$C$$ 不做约束，实际计算中根据经验指定为一个固定值。
 
-对偶算法
+#### 对偶算法
 
 将问题\(5\)转为二次规划标准形，拉格朗日函数为，
 
@@ -52,6 +52,8 @@ $$\sum_{i=1}^m y_i \alpha_i = 0$$                                               
 
 $$0 \le \alpha_i \le C, \ \forall i \in [m]$$                                                                                            \(8\)
 
+#### KKT
+
 我们给出\(5\)的KKT条件，
 
 $$\alpha_i \ge 0, \quad \mu_i \ge 0$$                   \(拉格朗日乘子的限制条件\)
@@ -66,11 +68,11 @@ $$\xi_i \ge 0 $$                                     （软间隔约束放宽条
 
 根据以上5个条件，可以得出以下结论（读者可以自己推导），
 
+$$\forall i \in [m]$$，
+
 $$\begin {cases} \alpha_i = 0 \Leftrightarrow y_i f(\mathbf x_i) \ge 1 \\ 0 \lt \alpha_i \lt C \Leftrightarrow y_i f(\mathbf x_i) = 1 \\ \alpha_i = C \Leftrightarrow y_i f(\mathbf x_i)  \le 1 \end{cases}$$
 
 上面对$$\mathbf w$$ 求偏导时已经得到$$\mathbf w$$ 的解析解，于是，
 
 $$f(\mathbf x) = \mathbf {wx} + b = \sum_{j=1}^m y_j \alpha_j \mathbf x_j \mathbf x + b$$
-
-
 

@@ -11,4 +11,5 @@
   * [Solve](svm/solve.md)
   * [Soft](svm/smo.md)
   * [SMO\_SVM](svm/smosvm.md)
+  * [SMO\_A](svm/smoa.md)
 
