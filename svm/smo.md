@@ -76,3 +76,9 @@ $$\begin {cases} \alpha_i = 0 \Leftrightarrow y_i f(\mathbf x_i) \ge 1 \\ 0 \lt 
 
 $$f(\mathbf x) = \mathbf {wx} + b = \sum_{j=1}^m y_j \alpha_j \mathbf x_j \mathbf x + b$$
 
+#### 求解b值
+
+根据上面KKT条件可知，当$$0 \lt \alpha_i \lt C$$ 时，有$$y_i f(\mathbf x_i) = 1$$，从而可知，
+
+$$b = y_i - \sum_{j =1}^m y_j \alpha_j \mathbf x_j \mathbf x_i, \quad \forall i \in [m], 0 \lt \alpha_i \lt C$$
+

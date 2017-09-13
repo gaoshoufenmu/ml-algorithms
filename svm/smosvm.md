@@ -72,7 +72,7 @@ $$K_{ij} = \mathbf x_i \mathbf x_j$$
 
 求导，令导数等于0求得极值解，
 
-$$\frac {d \Psi} {d \alpha2} = -s K_{11} (w - s \alpha_2) + K_{22} \alpha_2 + s K_{12} (w - s \alpha_2) - K_{12} \alpha_2 - v_1 y_2 + v_2 y_2 + s -1 = 0$$
+$$\frac {d \Psi} {d \alpha_2} = -s K_{11} (w - s \alpha_2) + K_{22} \alpha_2 + s K_{12} (w - s \alpha_2) - K_{12} \alpha_2 - v_1 y_2 + v_2 y_2 + s -1 = 0$$
 
 对上式化简和移项得，
 
@@ -138,7 +138,7 @@ $$g_2 = v_2y_2 - 1 = y_2(f_2 - b - y_1 K_{12} \alpha_1^{(p)} - y_2K_{22} \alpha_
 
 综合上式，
 
-$$\begin{cases} \Psi = \frac 1 2 K_{11}  \alpha_1^2 + \frac 1 2 K_{22} \alpha_2 + s K_{12} \alpha_1 \alpha_2 + g_1 \alpha_1 + g_2 \alpha_2 \\ \alpha_1 = \alpha_1^{(p)} + s(\alpha_2^{(p)} - \alpha_2) \\ g_1 =y_1(f_1 - y_1 - b) - K_{11} \alpha_1^{(p)} - s K_{12} \alpha_2^{(p)} \\ g_2 =y_2(f_2 - y_2 - b) - s K_{12} \alpha_1^{(p)} -  K_{22} \alpha_2^{(p)} \end{cases}$$
+$$\begin{cases} \Psi = \frac 1 2 K_{11}  \alpha_1^2 + \frac 1 2 K_{22} \alpha_2 + s K_{12} \alpha_1 \alpha_2 + g_1 \alpha_1 + g_2 \alpha_2 \\ \alpha_1 = \alpha_1^{(p)} + s(\alpha_2^{(p)} - \alpha_2) \\ g_1 =y_1(f_1 - y_1 - b) - K_{11} \alpha_1^{(p)} - s K_{12} \alpha_2^{(p)} \\ g_2 =y_2(f_2 - y_2 - b) - s K_{12} \alpha_1^{(p)} -  K_{22} \alpha_2^{(p)} \end{cases}$$                                                               \(14\)
 
 于是分别将$$\alpha_2 = L$$ 和$$\alpha_2 =H$$ 代入上面方程组求的$$\Psi$$ 较小值确定$$\alpha_2$$应该取哪个端点。
 
