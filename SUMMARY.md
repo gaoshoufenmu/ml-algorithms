@@ -13,4 +13,5 @@
   * [SMO\_SVM](svm/smosvm.md)
   * [SMO\_A](svm/smoa.md)
   * [Soft\_SGD](svm/softsgd.md)
+* [Decision Trees](decision-trees.md)
 
