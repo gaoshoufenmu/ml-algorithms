@@ -1,6 +1,6 @@
 上一篇文章[SVM](/SVM)我们知道了求解超平面$$\mathbf {wx} + b = 0$$ 的问题描述
 
-$$argmin_{\mathbf w, b} \ \frac 1 2 |\mathbf w|^2 \quad s.t. \  \forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$                                                  \(1\)
+$$argmin_{\mathbf w, b} \ \frac 1 2 |\mathbf w|^2 \quad s.t. \  \forall i \in \left[ m \right]， y_i(\mathbf {wx}_i + b) \ge 1$$                                                  \(1\)
 
 显然这是一个凸二次规划问题。
 
