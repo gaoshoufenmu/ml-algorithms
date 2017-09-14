@@ -12,4 +12,5 @@
   * [Soft](svm/smo.md)
   * [SMO\_SVM](svm/smosvm.md)
   * [SMO\_A](svm/smoa.md)
+  * [Soft\_SGD](svm/softsgd.md)
 
