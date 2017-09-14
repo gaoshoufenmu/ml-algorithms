@@ -2,6 +2,8 @@
 
 $$\langle \mathbf w - \mathbf u, \mathbf v \rangle \ge f(\mathbf w) - f(\mathbf u) + \frac \lambda 2 \left\| \mathbf w - \mathbf u \right\|^2$$
 
+称函数为$$\lambda$$ 强函数
+
 于是针对强凸函数的求最小值的SGD步骤如下，
 
 1. 目标：求 $$min_{\mathbf w \in \mathcal H} f(\mathbf w)$$
