@@ -20,7 +20,7 @@ $$\forall \mathbf u \in S, \quad f(\mathbf u) \ge f(\mathbf w) + \langle \mathbf
 
 ![](/assets/subgradients.png)
 
-$$\partial f(x) = \begin{cases} \lbrace 1 \rbrace &  \quad x \gt 0 \\ \lbrace -1 \rbrace &  \quad x \lt 0 \\ [-1,1] &  \quad x = 0 \end{cases}$$
+$$\partial f(x) = \begin{cases} \lbrace 1 \rbrace &  \quad x \gt 0 \\ \lbrace -1 \rbrace &  \quad x \lt 0 \\ \left[ -1,1 \right] &  \quad x = 0 \end{cases}$$
 
 * #### 获取次梯度的方法
 
