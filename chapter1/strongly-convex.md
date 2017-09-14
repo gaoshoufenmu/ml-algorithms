@@ -26,7 +26,7 @@ $$\Bbb E[f(\overline {\mathbf w})] - f(\mathbf w^*) \le \frac {\rho^2} {2 \lambd
 
 $$\langle \mathbf w^{(t)} - \mathbf w^*, \nabla^{(t)} \rangle \ge f(\mathbf w^{(t)}) - f(\mathbf w^*) + \frac \lambda 2 \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2$$     \(\*\)
 
-由于$$\mathbf w^{(t+1)}$$ 是$$\mathbf w^{(t+1/2)}$$ 在$$\cal H$$ 上的投影，且$$\mathbf w^* \in \cal H$$，所以有$$\left\| \mathbf w^{(t+1/2)} - \mathbf w^* \right\|^2 \ge \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2$$，因此，
+由于$$\mathbf w^{(t+1)}$$ 是$$\mathbf w^{(t+1/2)}$$ 在$$\mathcal H$$ 上的投影，且$$\mathbf w^* \in \cal H$$，所以有$$\left\| \mathbf w^{(t+1/2)} - \mathbf w^* \right\|^2 \ge \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2$$，因此，
 
 $$\left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2 - \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2 \ge \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2 - \left\| \mathbf w^{(t+1/2)} - \mathbf w^* \right\|^2 $$
 
