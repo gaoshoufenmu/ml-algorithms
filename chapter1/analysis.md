@@ -2,7 +2,7 @@
 
 设目标函数$$f(\mathbf w)$$ 在$$\mathbf w^*$$ 处取得最小值，梯度下降法迭代$$T$$ 次后的输出为$$\overline {\mathbf w} = \frac 1 T \sum_{t=1}^T \mathbf w^{(t)}$$，于是，
 
-$$\begin{align} f(\overline {\mathbf w}) - f(\mathbf w^*) & = f(\frac 1 T \sum_{t=1}^T \mathbf w^{(t)}) - f(\mathbf w^*)  \\ & \le \frac 1 T \sum_{t=1}^T (f(\mathbf w^{(t)})) - f(\mathbf w^*) \\ & = \frac 1 T \sum_{t=1}^T (f(\mathbf w^{(t)}) - f(\mathbf w^*)) \end{align}$$
+$$\begin{aligned} f(\overline {\mathbf w}) - f(\mathbf w^*) & = f(\frac 1 T \sum_{t=1}^T \mathbf w^{(t)}) - f(\mathbf w^*)  \\ & \le \frac 1 T \sum_{t=1}^T (f(\mathbf w^{(t)})) - f(\mathbf w^*) \\ & = \frac 1 T \sum_{t=1}^T (f(\mathbf w^{(t)}) - f(\mathbf w^*)) \end{aligned}$$
 
 由于目标函数$$f(\mathbf w)$$ 是下凸的，所以上面不等式成立，且有下面的性质（可以理解为过点$$\mathbf w^{(t)}$$的切线位于函数曲线下方，所以按切线方向下降的比函数下降的快，如下图），
 
