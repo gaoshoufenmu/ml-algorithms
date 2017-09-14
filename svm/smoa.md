@@ -8,7 +8,7 @@ $$b = y_i - \sum_{j =1}^m y_j \alpha_j \mathbf x_j \mathbf x_i, \quad \forall i 
 
 * 当$$0 \lt \alpha_i \lt C$$，
 
-$$\begin{align} b_1 & = y_1 - y_1 \alpha_1 K_{11} - y_2 \alpha_2 K_{12} - \sum_{j = 3}^m y_j \alpha_j K_{1j} \\ & = y_1 - y_1 \alpha_1 K_{11} - y_2 \alpha_2 K_{12} +  y_1 \alpha_1^{(p)} K_{11} + y_2 \alpha_2^{(p)} K_{12} + b -( \sum_{j=1}^m y_j \alpha_j^{(p)} K_{1j} + b) \\ & = (y_1 - f_1) - y_1 \alpha_1 K_{11} - y_2 \alpha_2 K_{12} +  y_1 \alpha_1^{(p)} K_{11} + y_2 \alpha_2^{(p)} K_{12} + b \\ & = - E_1 - y_1 K_{11} (\alpha_1 - \alpha_1^{(p)}) - y_2 K_{12} (\alpha_2 - \alpha_2^{(p)}) + b \end{align}$$        \(15\)
+$$\begin{aligned} b_1 & = y_1 - y_1 \alpha_1 K_{11} - y_2 \alpha_2 K_{12} - \sum_{j = 3}^m y_j \alpha_j K_{1j} \\ & = y_1 - y_1 \alpha_1 K_{11} - y_2 \alpha_2 K_{12} +  y_1 \alpha_1^{(p)} K_{11} + y_2 \alpha_2^{(p)} K_{12} + b -( \sum_{j=1}^m y_j \alpha_j^{(p)} K_{1j} + b) \\ & = (y_1 - f_1) - y_1 \alpha_1 K_{11} - y_2 \alpha_2 K_{12} +  y_1 \alpha_1^{(p)} K_{11} + y_2 \alpha_2^{(p)} K_{12} + b \\ & = - E_1 - y_1 K_{11} (\alpha_1 - \alpha_1^{(p)}) - y_2 K_{12} (\alpha_2 - \alpha_2^{(p)}) + b \end{aligned}$$        \(15\)
 
 使用
 
