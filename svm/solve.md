@@ -1,6 +1,6 @@
 上一篇文章“大肆”介绍了拉格朗日对偶，耗费了不少篇幅，以致都快忘记我们的本来目的了，在这篇文章中赶紧回归正题，我们现在要计算
 
-$$argmin_{\mathbf w, b} \ \frac 1 2 |\mathbf w|^2 \quad s.t. \  \forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$                                                                       \(\*\)
+$$argmin_{\mathbf w, b} \ \frac 1 2 |\mathbf w|^2 \quad s.t. \  \forall i \in [m], \  y_i(\mathbf {wx}_i + b) \ge 1$$                                                                       \(\*\)
 
 拉格朗日函数为，
 
