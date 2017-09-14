@@ -2,7 +2,7 @@
 
 #### 软间隔
 
-现实中的样本并非一定是线性可分的，此时，可以放宽限制条件，本章第一篇文章中的\(6\)式中的限制条件为$$\forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1$$，这表示所有点能被超平面正确划分，等号成立时的样本点位于间隔边界上，大于号成立时的样本点位于间隔边界两侧。对于线性不可分的样本，我们引入松弛变量\(slack variable\) $$\xi_i \ge 0$$，将限制条件改为$$\forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1 - \xi_i$$，允许一定数量的带内样本点或误分类点，根据本章第一篇文章中的\(5\)式知道带内宽度为$$\frac 2 {|\mathbf w|}$$，划分超平面位于带内中间位置，如下图，
+现实中的样本并非一定是线性可分的，此时，可以放宽限制条件，本章第一篇文章中的\(6\)式中的限制条件为$$\forall i \in [m], \  y_i(\mathbf {wx}_i + b) \ge 1$$，这表示所有点能被超平面正确划分，等号成立时的样本点位于间隔边界上，大于号成立时的样本点位于间隔边界两侧。对于线性不可分的样本，我们引入松弛变量\(slack variable\) $$\xi_i \ge 0$$，将限制条件改为$$\forall i \in [m], \ y_i(\mathbf {wx}_i + b) \ge 1 - \xi_i$$，允许一定数量的带内样本点或误分类点，根据本章第一篇文章中的\(5\)式知道带内宽度为$$\frac 2 {|\mathbf w|}$$，划分超平面位于带内中间位置，如下图，
 
 ![](/assets/SVM_soft.png)
 
@@ -10,7 +10,7 @@
 
 由于放宽了限制条件，相应的本章第一篇文章中\(6\)式的目标函数$$\frac 1 2 |\mathbf w|^2$$也需要增加一项惩罚因子，不然因为引入松弛因子，再小的$$|\mathbf w|$$都是允许的（此时虽然足够小的$$|\mathbf w|$$ 使得间距足够大，即便是所有样本点均处于带内或者成为误分类点，由于松弛因子的存在，这样做都是满足约束条件的，但显然背离了我们的目标），显然，我们虽然放宽了约束条件，但是我们并不会放纵那些误分类点距离对应的间隔边界太远，也就是说，只能容忍较小程度的误分类，不希望$$\xi_i$$太大，所以目标函数的优化改写为，
 
-$$min_{\mathbf w, b, \mathbf \xi} \ \frac 1 2 |\mathbf w|^2 + C \sum_{i=1}^m \xi_i, \quad \forall i \in [m]， y_i(\mathbf {wx}_i + b) \ge 1 - \xi_i, \ \xi_i \ge 0$$          \(5\)
+$$min_{\mathbf w, b, \mathbf \xi} \ \frac 1 2 |\mathbf w|^2 + C \sum_{i=1}^m \xi_i, \quad \forall i \in [m], \ y_i(\mathbf {wx}_i + b) \ge 1 - \xi_i, \ \xi_i \ge 0$$          \(5\)
 
 其中$$C$$ 是带内间距和误分类点之间的平衡因子，$$C$$ 越大，对误分类点的惩罚就越大。对$$C$$ 不做约束，实际计算中根据经验指定为一个固定值。
 
@@ -26,7 +26,7 @@ $$max_{\alpha, \mu} \ min_{\mathbf w, b, \xi} \ L$$
 
 求偏导并令其等于0 如下（$$\mathbf x_{ki}$$ 表示第$$k$$ 个样本点输入向量的第$$i$$ 个分量），
 
-$$\nabla_{\mathbf w_i} L = \mathbf w_i - \sum_{k=1}^m \alpha_k y_k \mathbf x_{ki} = 0 , \quad \forall i \in [m]$$
+$$\nabla_{\mathbf w_i} L = \mathbf w_i - \sum_{k=1}^m \alpha_k y_k \mathbf x_{ki} = 0 ,  \quad \forall i \in [m]$$
 
 $$\nabla_b L = - \sum_{k=1}^m \alpha_k y_k = 0$$
 
