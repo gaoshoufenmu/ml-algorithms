@@ -31,7 +31,7 @@ $$\left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2 - \left\| \mathbf w^{(t)} -
 
 我们仿照GD的分析中的证明，有
 
-$$\begin{align} \langle \mathbf w^{(t)} - \mathbf w^*, \mathbf v_t \rangle & = \frac 1 \eta \langle \mathbf w^{(t)} - \mathbf w^*, \eta \mathbf v_t \rangle \\ & = \frac 1 {2 \eta} (- \left\| \mathbf w^{(t)} - \mathbf w^* - \eta \mathbf v_t \right\|^2 + \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2 + \eta^2 \left\| \mathbf v_t \right\|^2) \\ & = \frac 1 {2 \eta} (- \left\| \mathbf w^{(t+1/2)} - \mathbf w^* \right\|^2 + \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2) + \frac \eta 2 \left\| \mathbf v_t \right\|^2 \\ & \le \frac 1 {2 \eta} (- \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2 + \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2) + \frac \eta 2 \left\| \mathbf v_t \right\|^2 \end{align}$$
+$$\begin{aligned} \langle \mathbf w^{(t)} - \mathbf w^*, \mathbf v_t \rangle & = \frac 1 \eta \langle \mathbf w^{(t)} - \mathbf w^*, \eta \mathbf v_t \rangle \\ & = \frac 1 {2 \eta} (- \left\| \mathbf w^{(t)} - \mathbf w^* - \eta \mathbf v_t \right\|^2 + \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2 + \eta^2 \left\| \mathbf v_t \right\|^2) \\ & = \frac 1 {2 \eta} (- \left\| \mathbf w^{(t+1/2)} - \mathbf w^* \right\|^2 + \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2) + \frac \eta 2 \left\| \mathbf v_t \right\|^2 \\ & \le \frac 1 {2 \eta} (- \left\| \mathbf w^{(t+1)} - \mathbf w^* \right\|^2 + \left\| \mathbf w^{(t)} - \mathbf w^* \right\|^2) + \frac \eta 2 \left\| \mathbf v_t \right\|^2 \end{aligned}$$
 
 剩下的，已无需赘述，不难发现加上投影操作后依然有
 
