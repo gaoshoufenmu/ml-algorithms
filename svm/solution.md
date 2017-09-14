@@ -124,7 +124,7 @@ $$\mu_k^* g_k(x^*) = 0 \quad \forall k \in [q]$$
 
 或者写为，
 
-$$\nabla_x L(x^*, \lambda^*, \mu^*) = 0 \\  \nabla_x L(x^*, \lambda^*, \mu^*) = 0 \\ \nabla_x L(x^*, \lambda^*, \mu^*) = 0$$
+$$\begin{cases} \nabla_x L(x^*, \lambda^*, \mu^*) = 0 \\  \nabla_x L(x^*, \lambda^*, \mu^*) = 0 \\ \nabla_x L(x^*, \lambda^*, \mu^*) = 0 \end{cases}$$
 
 在得到最佳解$$x^*$$的时候，$$L$$ 函数在$$x^*$$ 处的梯度为0
 
