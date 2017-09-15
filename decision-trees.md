@@ -8,7 +8,7 @@
 
 输入：训练集$$S_0 = \lbrace (\mathbf x_1, y_1), (\mathbf x2, y_2), ...,(\mathbf x_m, y_m) \rbrace$$
 
-            属性集（下标）$$A_0 = \lbrace a_1, a_2, ..., a_d \rbrace$$
+属性集（下标）$$A_0 = \lbrace a_1, a_2, ..., a_d \rbrace$$
 
 过程：函数$$TreeGenerate(S, A)$$
 
@@ -17,21 +17,22 @@
 * 如果$$S$$ 中所有样本属于同一分类$$C$$，则将$$node$$ 标记为$$C$$ 类叶节点；$$return$$
 
 * 如果$$A$$ 为$$\varnothing$$ ，或者样本集$$S$$ 在属性集$$A$$ 上的各属性值分别相同（此时任何由增益选取的属性，都无法将当前样本空间划分为两个子空间，所有没必要再划分），将$$node$$ 标记为叶节点，其分类为$$S$$ 中样本数量最多的类；$$return$$
-*  $$ let j = argmax_{i \in A}  \ Gain(S, i)$$；
+
+* $$ let j = argmax_{i \in A}  \ Gain(S, i)$$；
 
 $$for$$ 属性 $$j$$ 的每一个值$$j_v$$ ，$$do$$
 
-      为$$node$$ 生成一个分支；令$$S_v$$ 为$$S$$ 中属性j 的值为$$j_v$$ 的样本子集；
+        为$$node$$ 生成一个分支；令$$S_v$$ 为$$S$$ 中属性j 的值为$$j_v$$ 的样本子集；
 
-     $$if \ S_v = \varnothing, \ then$$ 将$$node$$ 标记为叶节点，其分类为$$S$$ 中分类数量最多的类；$$return$$
+       $$if \ S_v = \varnothing, \ then$$ 将$$node$$ 标记为叶节点，其分类为$$S$$ 中分类数量最多的类；$$return$$
 
-      $$else$$
+       $$else$$
 
-             以$$TreeGenerate(S_v, A- \lbrace j \rbrace)$$ 为$$node$$ 的一个子节点
+              以$$TreeGenerate(S_v, A- \lbrace j \rbrace)$$为$$node$$ 的一个子节点
 
-      $$end \ if$$
+       $$end \ if$$
 
-$$end \  for$$
+$$end \ for$$
 
 输出：以$$node$$ 为根节点的决策树
 
