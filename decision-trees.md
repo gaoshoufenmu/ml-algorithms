@@ -30,7 +30,7 @@ $$else$$
 
 以$$TreeGenerate(S\_v, A- \lbrace j \rbrace)$$为$$node$$ 的一个子节点
 
-$$end if$$
+$$end \ if$$
 
 $$end \ for$$
 
