@@ -22,11 +22,9 @@
 
 $$for$$ 属性 $$j$$ 的每一个值$$j_v$$ ，$$do$$
 
-         为$$node$$ 生成一个分支；令$$S_v$$ 为$$S$$ 中属性j 的值为$$j_v$$ 的样本子集；
+$$if \ S\\_v = \varnothing, \ then$$ 将$$node$$ 标记为叶节点，其分类为$$S$$ 中分类数量最多的类；$$return$$
 
-         $$if \ S\_v = \varnothing, \ then$$ 将$$node$$ 标记为叶节点，其分类为$$S$$ 中分类数量最多的类；$$return$$
-
-     else
+else
 
 以$$TreeGenerate\(S\_v, A- \lbrace j \rbrace\)$$为$$node$$ 的一个子节点
 
