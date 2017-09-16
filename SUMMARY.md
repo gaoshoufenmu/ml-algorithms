@@ -14,4 +14,5 @@
   * [SMO\_A](svm/smoa.md)
   * [Soft\_SGD](svm/softsgd.md)
 * [Decision Trees](decision-trees.md)
+  * [Pruning](decision-trees/pruning.md)
 
