@@ -6,7 +6,7 @@
 
 我们使用某种"增益"测量方法来决定每次使用哪个属性来划分能最大化降低错误率。这里的“增益”测量方法暂且不表，让我们先看看构造决策树的算法。
 
-输入：训练集$$S_0 = \lbrace (\mathbf x_1, y_1), (\mathbf x2, y_2), ...,(\mathbf x_m, y_m) \rbrace$$
+输入：训练集$$S_0 = \lbrace (\mathbf x_1, y_1), (\mathbf x_2, y_2), ...,(\mathbf x_m, y_m) \rbrace$$
 
 属性集（下标）$$A_0 = \lbrace a_1, a_2, ..., a_d \rbrace$$
 
@@ -22,13 +22,13 @@
 
 $$for$$ 属性 $$j$$ 的每一个值$$j_v$$ ，$$do$$
 
-为$$node$$ 生成一个分支；令$$S\_v$$ 为$$S$$ 中属性j 的值为$$j\_v$$ 的样本子集；
+为$$node$$ 生成一个分支；令$$S_v$$ 为$$S$$ 中属性j 的值为$$j_v$$ 的样本子集；
 
-$$if \ S_v = \varnothing, \ then$$ 将$$node$$ 标记为叶节点，其分类为$$S$$ 中分类数量最多的类；$$return$$
+$$if \ S_v = \varnothing, \ then$$ 将$$node$$ 标记为叶节点，其分类为$$S$$ 中分类数量最多的类（因为样本集没有覆盖到）；$$return$$
 
 $$else$$
 
-以$$TreeGenerate(S\_v, A- \lbrace j \rbrace)$$为$$node$$ 的一个子节点
+以$$TreeGenerate(S_v, A- \lbrace j \rbrace)$$为$$node$$ 的一个子节点
 
 $$end \ if$$
 
