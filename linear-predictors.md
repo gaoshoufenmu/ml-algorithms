@@ -32,7 +32,7 @@ $$\gamma = min_{i} \ (y_i \langle \mathbf w^*, \mathbf x_i \rangle), \quad \over
 
 $$y_i \langle \overline {\mathbf w}, \mathbf x_i \rangle = \frac 1 \gamma y_i \langle \mathbf w^*, \mathbf x_i \rangle \ge 1, \quad \forall i = 1,...,m$$                                         \(5\)
 
-感知机
+#### 感知机
 
 感知机是一种迭代算法，假设在$$t$$ 次迭代，下标为$$i$$ 的样本点判断有误，
 
@@ -48,7 +48,29 @@ $$y_i \langle \mathbf w^{(t+1)}, \mathbf x_i \rangle = y_i \langle \mathbf w^{(t
 
 相比\(6\)式，更接近正确（大于0时就表示分类正确），这说明更新是有效的，正在朝着分类正确的方向更新。
 
-算法：
+##### 梯度下降法
+
+关于更新算法，还可以用损失函数来获得，样本点到划分超平面距离为，
+
+$$\frac {\langle \mathbf w, \mathbf x_i \rangle} {|\mathbf w|}$$
+
+对于误分类点来说，距离可以写为，
+
+$$- y_i \frac {\langle \mathbf w, \mathbf x_i \rangle} {|\mathbf w|}$$
+
+设样本集误分类子集下标为$$M_e$$，总损失函数为，
+
+$$L = - \sum_{i \in M_e} y_i \frac {\langle \mathbf w, \mathbf x_i \rangle} {|\mathbf w|}$$                                                                                    \(8\)
+
+我们的目的是极小化\(8\)式函数，将$$L$$ 看作关于$$\mathbf w$$ 的函数，采用梯度下降法，
+
+$$\mathbf w^{(t+1)} = \mathbf w^{(t)} - \nabla L = \mathbf w^{(t)} + \sum_{i \in M_e} \eta y_i \mathbf x_i$$
+
+不过，为了简单起见，实际计算过程中一次选择一个样本点使其梯度下降，而非所有误分类点的梯度下降，所以，
+
+$$\mathbf w^{(t+1)} = \mathbf w^{(t)} + \eta y_i \mathbf x_i$$
+
+##### 算法：
 
 输入：训练集$$\lbrace (\mathbf x_1,y_1), ..., (\mathbf x_m, y_m) \rbrace$$
 
