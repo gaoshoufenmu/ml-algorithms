@@ -15,4 +15,5 @@
   * [Soft\_SGD](svm/softsgd.md)
 * [Decision Trees](decision-trees.md)
   * [Pruning](decision-trees/pruning.md)
+* [Linear Predictors](linear-predictors.md)
 
