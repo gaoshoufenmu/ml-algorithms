@@ -16,4 +16,5 @@
 * [Decision Trees](decision-trees.md)
   * [Pruning](decision-trees/pruning.md)
 * [Linear Predictors](linear-predictors.md)
+  * [Regression](linear-predictors/regression.md)
 
