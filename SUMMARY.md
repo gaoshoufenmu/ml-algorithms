@@ -18,4 +18,5 @@
 * [Linear Predictors](linear-predictors.md)
   * [Regression](linear-predictors/regression.md)
   * [Logistic Regression](linear-predictors/logistic-regression.md)
+* [PGM](pgm.md)
 
