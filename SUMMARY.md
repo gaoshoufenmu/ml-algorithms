@@ -20,4 +20,5 @@
   * [Logistic Regression](linear-predictors/logistic-regression.md)
 * [PGM](pgm.md)
   * [MRF](pgm/mrf.md)
+  * CRF
 
