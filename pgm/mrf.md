@@ -10,11 +10,15 @@ $$P(\mathbf x) = \frac 1 {Z} \prod_C \Psi_C(\mathbf x_C)$$                      
 
 $$Z = \sum_{\mathbf x} \prod_C \Psi_C(\mathbf x_C)$$                                                                                                          \(2\)
 
+
+
 #### 条件随机场（CRF）
 
 我们先看下图中几个概率模型的关系，借助其中的几个概率模型来理解CRF。
 
 ![](/assets/CRF_model.png)
+
+
 
 ##### Naive Bayes
 
@@ -34,6 +38,8 @@ $$p(\mathbf x, y) = p(y) p(\mathbf x| y) = p(y) p(x_1|y) \prod_{i=2}^m p(x_i|x_{
 
 $$p(y|\mathbf x) \propto p(\mathbf x, y) = p(y) \prod_{i=1}^m p(x_i|y)$$                                                                                                   \(4\)
 
+
+
 ##### HMM
 
 从单个分类预测扩展到序列分类预测，就是NB向HMM转换。
@@ -42,7 +48,7 @@ $$p(y|\mathbf x) \propto p(\mathbf x, y) = p(y) \prod_{i=1}^m p(x_i|y)$$        
 
 $$p(x_i,y_i) = p(y_i)p(x_i|y_i)$$
 
-于是，将$$n$$ 个 NB模型连接起来，联合概率为，
+于是，**将**$$n$$** 个 NB模型连接起来**，联合概率为，
 
 $$p(\vec x, \vec y) = \prod_{i=1}^n p(y_i)p(x_i|y_i)$$
 
