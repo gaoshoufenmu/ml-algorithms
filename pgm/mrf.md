@@ -10,15 +10,11 @@ $$P(\mathbf x) = \frac 1 {Z} \prod_C \Psi_C(\mathbf x_C)$$                      
 
 $$Z = \sum_{\mathbf x} \prod_C \Psi_C(\mathbf x_C)$$                                                                                                          \(2\)
 
-
-
 #### 条件随机场（CRF）
 
 我们先看下图中几个概率模型的关系，借助其中的几个概率模型来理解CRF。
 
 ![](/assets/CRF_model.png)
-
-
 
 ##### Naive Bayes
 
@@ -37,8 +33,6 @@ $$p(\mathbf x, y) = p(y) p(\mathbf x| y) = p(y) p(x_1|y) \prod_{i=2}^m p(x_i|x_{
 所以，为了简单，我们假设$$\mathbf x$$ 的各分量之间相互独立，这就是**朴素贝叶斯假设**，于是，
 
 $$p(y|\mathbf x) \propto p(\mathbf x, y) = p(y) \prod_{i=1}^m p(x_i|y)$$                                                                                                   \(4\)
-
-
 
 ##### HMM
 
@@ -59,6 +53,8 @@ $$p(\vec x, \vec y) = \prod_{i=1}^n p(y_i|y_{i-1})p(x_i|y_i)$$                  
 $$p(y_1|y_0) = p(y_1)$$                                                                                                                                              \(6\)
 
 其中$$y_0$$ 的引入是为了书写统一。
+
+**结论**：使得\(5\)式联合概率最大的状态序列就是要求的状态序列。
 
 计算观测序列$$\vec x$$ 出现（所有可能的状态序列）的概率则使用下式，
 
