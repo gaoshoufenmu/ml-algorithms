@@ -21,4 +21,5 @@
 * [PGM](pgm.md)
   * [MRF](pgm/mrf.md)
   * [CRF](pgm/crf.md)
+* [HMM](hmm.md)
 
