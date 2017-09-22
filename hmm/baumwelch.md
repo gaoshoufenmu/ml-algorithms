@@ -46,7 +46,7 @@ $$L(\pi) = \sum_{i=1}^N \text{log} \pi_i P(O, i_1=i|\lambda_t) + \alpha(\sum_{i=
 
 对$$\pi_i$$ 求偏导并令其等于0，
 
-$$P(O,i_1=i|\lambda_t) / \pi_i + \alpha = 0, \quad 1 \le i \le N$$                                                                                             \(7\)                                                        
+$$P(O,i_1=i|\lambda_t) / \pi_i + \alpha = 0, \quad 1 \le i \le N$$                                                                                             \(7\)
 
 求和解得，
 
@@ -54,7 +54,7 @@ $$\sum_{i=1}^N P(O, i_1=i|\lambda_t) + \alpha \sum_{i=1}^N \pi_i = 0 \Rightarrow
 
 代入\(7\)式，
 
-$$\pi_i = P(O, i_1=i|\lambda_t) / P(O|\lambda_t), \quad 1 \le i \le N$$                                                                                        \(8\)
+$$\pi_i = P(O, i_1=i|\lambda_t) / P(O|\lambda_t) = P(i_1 = i|O,\lambda), \quad 1 \le i \le N$$                                                                                        \(8\)
 
 * \(2\) 第二项
 
@@ -86,7 +86,7 @@ $$L_j =\sum_{t=1}^n \text{log} b_{jo_t}P(O,i_t=j|\lambda_t) + \alpha (\sum_{k=1}
 
 对$$b_{jk} $$ 求偏导并令其等于0，
 
-$$\sum_{t \in [n], o_t = k} P(O, i_t=j|\lambda_t) / b_{jk} + \alpha = 0, \quad 1 \le k \le M$$                                                                            \(10\)   
+$$\sum_{t \in [n], o_t = k} P(O, i_t=j|\lambda_t) / b_{jk} + \alpha = 0, \quad 1 \le k \le M$$                                                                            \(10\)
 
 求和解得，
 
@@ -96,7 +96,19 @@ $$\sum_{k=1}^M \sum_{t \in [n], o_t=k} P(O, i_t = j |\lambda_t) + \alpha \sum_{k
 
 $$b_{jk} = \sum_{t=1}^n P(O, i_t= j|\lambda_t)I(o_t= k) / \sum_{t=1}^n P(O, i_t=j|\lambda_t)$$                                                                  \(11\)
 
-虽然公式推导已经给出来了，但是实际如何操作与计算？
+虽然公式推导已经给出来了\(8\),\(9\)和\(11\)，但是实际如何操作与计算？
 
+对于\(8\)式，分母$$P(O|\lambda_t)$$ 可以采用本章第一篇文章中的前向向算法计算得到，首先给出相关的公式，
 
+$$\gamma_t(i) = P(i|O, \lambda) = \alpha_t(i) \beta_t(i) / \sum_{i=1}^N \alpha_t(i) \beta_t(i)$$                                                                                      \(12\)
+
+$$\xi_t(i,j) = P(i, j|O, \lambda) = \alpha_t(i) a_{i j} b_{j o_{t+1}} \beta_{t+1}(j) / \sum_{i=1}^N \sum_{j=1}^N \alpha_t(i) a_{ij} b_{jo_{t+1}} \beta_{t+1}(j)$$                             \(13\)
+
+于是模型参数变为，
+
+$$\pi_i = \gamma_t(i)$$                                                                                                                                                               \(14\)                                                                              
+
+$$a_{ij}=\sum_{t=1}^{n-1} \xi_t(i,j) / \sum_{t=1}^{n-1} \gamma_t(i)$$                                                                                                                       \(15\)
+
+$$b_{jk} = \sum_{t=1}^n \gamma_t(j) I(o_t=k) / \sum_{t=1}^n \gamma_t(j)$$                                                                                                         \(16\)
 

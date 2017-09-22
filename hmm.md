@@ -78,3 +78,33 @@ $$\beta_n(i_n) = 1$$                                                            
 
 $$P(O|\lambda) = \sum_{i_1=1}^N \pi_{i_1}\beta_1(i_1) b_{i_1o_1}$$                                                                                                            \(11\)
 
+#### 前向后向算法
+
+* 给定模型参数$$\lambda$$ 和观测序列$$O$$，在时刻$$t$$ 状态为$$i_t$$ 的条件概率为，
+
+$$\gamma_t(i_t) = P(i_t|O, \lambda) = P(i_t, O|\lambda) / P(O|\lambda)$$
+
+根据前向概率和后向概率可知$$t$$ 时刻状态为$$i_t$$ 且观测序列为$$O$$ 的概率为，
+
+$$P(i_t,O|\lambda) = \alpha_t(i_t) \beta_t(i_t)$$
+
+对$$t$$ 时刻的状态求累加和得到观测序列出现的概率，
+
+$$P(O|\lambda) = \sum_{i_t=1}^N P(i_t,O|\lambda)$$
+
+综上，
+
+$$\gamma_t(i_t) = \alpha_t(i_t) \beta_t(i_t) / \sum_{i=1}^N \alpha_t(i) \beta_t(i)$$                                                                                               \(12\)
+
+* 给定模型参数$$\lambda$$ 和观测序列$$O$$，在时刻$$t$$ 状态为$$i_t$$ 且$$t+1$$ 时刻状态为$$i_{t+1}$$ 的条件概率为
+
+$$\xi(i_t,i_{t+1}) = P(i_t, i_{t+1}|O, \lambda) = P(i_t, i_{t+1},O|\lambda) / P(O|\lambda) = P(i_t, i_{t+1},O|\lambda) / \sum_{i=1}^N \sum_{j=1}^N P(i, j,O|\lambda)$$
+
+根据前向概率和后向概率，
+
+$$P(i,j,O|\lambda) = \alpha_t(i) a_{ij} b_{jo_{t+1}} \beta_{t+1}(j)$$
+
+于是，
+
+$$\xi(i_t,i_{t+1}) = \alpha_t(i_t) a_{i_t i_{t+1}} b_{i_{t+1}o_{t+1}} \beta_{t+1}(i_{t+1}) / \sum_{i=1}^N \sum_{j=1}^N \alpha_t(i) a_{ij} b_{jo_{t+1}} \beta_{t+1}(j)$$
+
