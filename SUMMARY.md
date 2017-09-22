@@ -23,4 +23,5 @@
   * [CRF](pgm/crf.md)
 * [HMM](hmm.md)
   * [Learn](hmm/learn.md)
+  * [Baum\_Welch](hmm/baumwelch.md)
 

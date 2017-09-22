@@ -42,8 +42,6 @@ $$P(X|\theta) = \sum_Y P(X,Y| \theta) = \sum_Y P(Y|\theta) \ P(X|Y, \theta)$$   
 
 $$P(X|\theta) = \prod_{X_i} P(X_i|\theta) = \prod_{X_i} \sum_{Y_i} P(X_i,Y_i| \theta) = \prod_{X_i} \sum_{Y_i} P(Y_i|\theta) P(X_i|Y_i, \theta)$$                     \(5\)
 
-
-
 现在要求得一个模型参数$$\theta$$，使得似然函数$$P(X|\theta)$$ 达到最大，即，观测序列出现的概率最大，这就是$$\theta$$ 的最大似然估计，\(5\)式中有连乘，通常为了计算方便，将问题转化为求对数似然函数，
 
 $$L(\theta) = \sum_{X_i} \text {log} \sum_{Y_i}  P(X_i,Y_i| \theta) = \sum_{X_i} \text {log} \sum_{Y_i} P(Y_i|\theta) P(X_i|Y_i, \theta)$$                                            \(6\)
@@ -64,8 +62,6 @@ $$E[\text{log} (X)] \le \text{log}(E[X])$$
 
 $$L(\theta) = \sum_{X_i} \text{log} \sum_{Y_i} Q_i(Y_i)[P(X_i,Y_i|\theta) / Q_i(Y_i)] \ge \sum_{X_i}  \sum_{Y_i} Q_i(Y_i) \text{log} [P(X_i,Y_i|\theta) / Q_i(Y_i)]$$     \(7\)
 
-
-
 此时求得似然函数$$L(\theta)$$ 的下界，取决于$$Q_i(Y_i), \ P(X_i,Y_i|\theta)$$这两个值，所以我们（在M步中）通过调整这两个值，优化其下界，**极大化下界来逼近**$$L(\theta)$$** 的极大值**，根据Jensen不等式，当等号成立时，随机变量变成常量值，
 
 $$P(X_i,Y_i|\theta) / Q_i(Y_i) = c$$                                                                                                                                       \(8\)
@@ -82,7 +78,7 @@ $$Q_i(Y_i) = P(X_i,Y_i|\theta) / \sum_{Y_i} P(X_i,Y_i|\theta) = P(X_i,Y_i|\theta
 
 以上就是E步，接着在M步中，调整$$\theta$$ 来极大化$$L(\theta)$$ 的下界，将下界函数（M步中的目标优化函数）记为，
 
-$$GLB(\theta) = \sum_{X_i}  \sum_{Y_i} Q_i(Y_i) \text{log} [P(X_i,Y_i|\theta) / Q_i(Y_i)]$$
+$$G(\theta) = \sum_{X_i}  \sum_{Y_i} Q_i(Y_i) \text{log} [P(X_i,Y_i|\theta) / Q_i(Y_i)]$$
 
 总结算法如下
 
@@ -111,5 +107,5 @@ $$L(\theta_{t+1}) \ge L(\theta_t)$$
 
 上式在$$\theta_t = \theta_{t+1}$$时等号成立。
 
-停止迭代的条件为：$$|\theta_{t+1} - \theta_t| \lt \epsilon$$  或者$$|GLB(\theta_{t+1}) - GLB(\theta_t)| \lt \epsilon$$
+停止迭代的条件为：$$|\theta_{t+1} - \theta_t| \lt \epsilon$$  或者$$|G(\theta_{t+1}) - G(\theta_t)| \lt \epsilon$$
 
