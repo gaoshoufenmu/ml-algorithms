@@ -106,7 +106,7 @@ $$\xi_t(i,j) = P(i, j|O, \lambda) = \alpha_t(i) a_{i j} b_{j o_{t+1}} \beta_{t+1
 
 于是模型参数变为，
 
-$$\pi_i = \gamma_t(i)$$                                                                                                                                                               \(14\)                                                                              
+$$\pi_i = \gamma_1(i)$$                                                                                                                                                               \(14\)
 
 $$a_{ij}=\sum_{t=1}^{n-1} \xi_t(i,j) / \sum_{t=1}^{n-1} \gamma_t(i)$$                                                                                                                       \(15\)
 

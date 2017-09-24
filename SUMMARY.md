@@ -24,4 +24,5 @@
 * [HMM](hmm.md)
   * [Learn](hmm/learn.md)
   * [Baum\_Welch](hmm/baumwelch.md)
+  * [Predicator](hmm/predicator.md)
 
