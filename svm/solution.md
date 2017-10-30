@@ -38,7 +38,7 @@ $$\theta(x) = max_{\lambda, \mu} [f(x) + \sum_{j=1}^p \lambda_j h_j(x) + \sum_{k
 
 这是为什么呢？假设 $$\exists j, h_{j}(x) \neq 0$$，那么当取值 $$\lambda_j \rightarrow \infty$$，且正负性与$$h_j(x)$$ 相同，就有$$\lambda_j h_j(x) \rightarrow +\infty$$，而如果$$\exists k, g_k(x) \gt 0$$，那么当取值 $$\mu_k \rightarrow +\infty$$，就有$$\mu_k g_k(x) \rightarrow +\infty$$，所以此情况下$$\theta(x) = +\infty$$
 
-\(2\) 若$$x$$ 满足原约束条件，此时$$f_j(x) = 0$$，所以，
+\(2\) 若$$x$$ 满足原约束条件，此时$$h_j(x) = 0$$，所以，
 
 $$\theta(x) = max_{\lambda, \mu} [f(x) + \sum_{j=1}^p \lambda_j h_j(x) + \sum_{k=1}^q \mu_k g_k(x)] = max_{\mu} [f(x) + \sum_{k=1}^q \mu_k g_k(x)]$$
 
