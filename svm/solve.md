@@ -20,7 +20,7 @@ $$\nabla_b L = - \sum_{i=1}^m \alpha_i y_i = 0$$
 
 注意，上两式中，$$w^j$$ 是向量$$\mathbf w$$ （维度记为$$d$$）的第$$j$$ 个分量，$$(\mathbf x_i, y_i)$$是$$m$$ 个样本中第$$i$$ 个样本，$$\mathbf x_{i}^j$$ 表示样本点$$\mathbf x_i$$ 的第$$j$$ 维分量，所以，
 
-$$\mathbf w = \sum_{i=1}^m \alpha_i y_i \mathbf x_i = 0$$                                                                                      \(2\)
+$$\mathbf w = \sum_{i=1}^m \alpha_i y_i \mathbf x_i$$                                                                                      \(2\)
 
 $$\sum_{i=1}^m \alpha_i y_i = 0$$                                                                                                    \(3\)
 
